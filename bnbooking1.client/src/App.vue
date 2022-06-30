@@ -23,7 +23,11 @@
         :to="{ name: 'Home' }"
         class="btn text-primary text-uppercase"
       >
-        <i class="mdi mdi-magnify fs-1 text-primary selectable"></i>
+        <i
+          class="mdi mdi-magnify fs-1 text-primary selectable"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseExample"
+        ></i>
       </router-link>
 
       <router-link
@@ -39,14 +43,21 @@
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
+import { logger } from './utils/Logger'
 export default {
   name: 'App',
   setup() {
     return {
       appState: computed(() => AppState),
+      searchBar: computed(() => AppState.searchBar),
+      showSearch() {
+        logger.log('is it working?')
+        AppState.searchBar = !AppState.searchBar
+      }
     }
   }
 }
+
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
