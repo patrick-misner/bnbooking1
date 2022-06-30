@@ -1,34 +1,36 @@
 <template>
-  <div :style="`background-image: url(${provider.account.picture})`">
-    <div class="post" @click="selectProvider">
-      <div>{{ provider.name }}</div>
-      <div>{{ provider.availability }}</div>
-      <div>
-        <div v-if="provider.rating >= 4.5">
-          <i class="mdi mdi-star-circle"></i>
-          <i class="mdi mdi-star-circle"></i>
-          <i class="mdi mdi-star-circle"></i>
-          <i class="mdi mdi-star-circle"></i>
-          <i class="mdi mdi-star-circle"></i>
-        </div>
-        <div v-if="provider.rating >= 3.5">
-          <i class="mdi mdi-star-circle"></i>
-          <i class="mdi mdi-star-circle"></i>
-          <i class="mdi mdi-star-circle"></i>
-          <i class="mdi mdi-star-circle"></i>
-        </div>
-        <div v-if="provider.rating >= 2.5">
-          <i class="mdi mdi-star-circle"></i>
-          <i class="mdi mdi-star-circle"></i>
-          <i class="mdi mdi-star-circle"></i>
-        </div>
-        <div v-if="provider.rating >= 1.5">
-          <i class="mdi mdi-star-circle"></i>
-          <i class="mdi mdi-star-circle"></i>
-        </div>
-        <div v-if="provider.rating >= 0.5">
-          <i class="mdi mdi-star-circle"></i>
-        </div>
+  <div
+    class="post"
+    @click="selectProvider"
+    :style="`background-image: url(${provider.creator.picture})`"
+  >
+    <div>{{ provider.name }}</div>
+    <div>{{ provider.availability }}</div>
+    <div>
+      <div v-if="provider.rating >= 4.5">
+        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle"></i>
+      </div>
+      <div v-if="(provider.rating >= 3.5) & (provider.rating < 4.5)">
+        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle"></i>
+      </div>
+      <div v-if="(provider.rating >= 2.5) & (provider.rating < 3.5)">
+        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle"></i>
+      </div>
+      <div v-if="(provider.rating >= 1.5) & (provider.rating < 2.5)">
+        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle"></i>
+      </div>
+      <div v-if="(provider.rating >= 0.5) & (provider.rating < 1.5)">
+        <i class="mdi mdi-star-circle"></i>
       </div>
     </div>
   </div>
@@ -54,8 +56,9 @@ export default {
 
 <style>
 .post {
-  width: 150px;
-  height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 225px;
 }
 .mdi-star-circle {
   color: yellow;
