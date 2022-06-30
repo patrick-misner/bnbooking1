@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import { AccountSchema } from '../models/Account'
-import { AppointmentsSchema } from "../models/Appointment";
+import { AppointmentSchema } from "../models/Appointment";
 import { ProviderSchema } from "../models/Provider";
 import { ReviewSchema } from "../models/Review";
 import { ValueSchema } from '../models/Value'
@@ -11,7 +11,7 @@ class DbContext {
   Providers = mongoose.model('Provider', ProviderSchema);
   Reviews = mongoose.model('Review', ReviewSchema);
 
-  Appointments = mongoose.model('Appointment', AppointmentsSchema)
+  Appointments = mongoose.model('Appointment', AppointmentSchema)
 }
 
 export const dbContext = new DbContext()
