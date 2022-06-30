@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
 
 
@@ -20,8 +21,21 @@ export const ProviderSchema = new Schema(
     photos: [{type: String}],
     name: {type: String},
     tags: [{type: String, required: true}],
-    availability: [{type: AvailabilitySchema, required: true}]
+    availability: [AvailabilitySchema],
+    creatorId: {type: ObjectId, required: true, ref: "Account"}
 
-  })
+  },
+  
+  { timestamps: true, toJSON: {virtuals: true}}
+  
+  )
 
+
+    ProviderSchema.virtual('creator', {
+      localField: 'creatorId',
+      ref: "Account",
+      foreignField: '_id',
+      justOne: true
+
+    })
 
