@@ -18,7 +18,7 @@ export class ProvidersController extends BaseController{
 
   async getAll (req, res, next){
     try {
-      const providers = await providersService.getAll(req.query)
+      const providers = await providersService.find(req.query.query)
       return res.send(providers)
     } catch (error) {
       next(error)

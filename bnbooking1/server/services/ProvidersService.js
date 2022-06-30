@@ -3,9 +3,19 @@ import { BadRequest } from "../utils/Errors"
 
 class ProvidersService {
   
+/**
+ * 
+ * @param {String} searchTerm this term will be used to find all providers with this as their name or one of the tags 
+ * @returns providers array 
+ */
+  async find ( searchTerm = ''){
+    // if(!query.body && searchTerm){
+    //   query.body = searchTerm
+    // }
   
-  async getAll(query = {}){
-    const providers = await dbContext.Providers.find(query).populate('creator', 'name picture')
+      const terms = [{ name:{$regex: new RegExp(searchTerm, 'ig')}},{tags:{$regex: new RegExp(searchTerm, 'ig')}}]
+    
+    const providers = await dbContext.Providers.find({$or: terms}).populate('creator', 'name picture')
     return providers
   }
   async getById(providerId) {
