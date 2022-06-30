@@ -22,7 +22,7 @@ export const ProviderSchema = new Schema(
     name: {type: String},
     tags: [{type: String, required: true}],
     availability: [AvailabilitySchema],
-    rating: {type: Number, min: 1, max: 5, required: true},
+    rating: {type: Number, min: 1, max: 5,},
     creatorId: {type: ObjectId, required: true, ref: "Account"}
 
   },
