@@ -4,7 +4,7 @@ const ObjectId = Schema.Types.ObjectId
 
 export const ReviewSchema = new Schema(
   {
-   creatorId: {type: ObjectId, required: true}, 
+   creatorId: {type: ObjectId, required: true, ref: "Account"}, 
    providerId: {type: ObjectId, required: true},
    body: {type: String},
    rating: {type: Number, min: 1, max: 5, required: true},
@@ -13,12 +13,6 @@ export const ReviewSchema = new Schema(
   { timestamps: true, toJSON: {virtuals: true}}
 
 )
-  ReviewSchema.virtual('provider',{
-    localField: 'providerId',
-    ref: "Provider",
-    foreignField: '_id',
-    justOne: true
-  })
 
   ReviewSchema.virtual('creator', {
     localField: 'creatorId',
