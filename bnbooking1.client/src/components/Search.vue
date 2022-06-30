@@ -1,7 +1,5 @@
 <template>
-  <!-- <Transition name="nested">
-  </Transition> -->
-  <div class="row ms-3">
+  <div class="row ms-3 show">
     <form @submit.prevent="searchProviders">
       <input
         v-model="search"
@@ -21,12 +19,14 @@
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { providersService } from "../services/ProvidersService";
-import { ref } from '@vue/reactivity';
+import { computed, ref } from '@vue/reactivity';
+import { AppState } from '../AppState';
 export default {
   setup() {
     const search = ref("");
     return {
       search,
+      searchBar: computed(() => AppState.searchBar),
       async searchProviders() {
         try {
           logger.log("searching", search.value);
@@ -43,4 +43,7 @@ export default {
 
 
 <style lang="scss" scoped>
+.show {
+  transition: 50ms;
+}
 </style>

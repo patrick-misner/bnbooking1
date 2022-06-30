@@ -4,16 +4,14 @@
     <div class="d-flex justify-content-end align-items-center header-bg">
       <Login />
     </div>
-    <Search />
+    <div class="collapse" id="collapseExample">
+      <Search />
+    </div>
   </header>
   <body class="bg-primary">
     <div class="container-fluid">
       <div class="row justify-content-around">
-        <div
-          v-for="p in providers"
-          :key="p.id"
-          class="col-md-3 p-0 m-2 rounded elevation-3"
-        >
+        <div v-for="p in providers" :key="p.id" class="col-md-3 p-0 m-2">
           <Provider :provider="p" />
         </div>
       </div>
@@ -38,6 +36,7 @@ export default {
     })
     return {
       providers: computed(() => AppState.providers),
+      searchBar: computed(() => AppState.searchBar)
     }
   }
 }

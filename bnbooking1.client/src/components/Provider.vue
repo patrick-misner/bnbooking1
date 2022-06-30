@@ -1,36 +1,38 @@
 <template>
   <div
-    class="post"
+    class="post rounded elevation-2"
     @click="selectProvider"
-    :style="`background-image: url(${provider.creator.picture})`"
+    :style="`background-image: url(${provider.coverImg})`"
   >
-    <div>{{ provider.name }}</div>
-    <div>{{ provider.availability }}</div>
-    <div>
+    <div class="text-uppercase ps-2 pt-2">{{ provider.name }}</div>
+    <div v-for="a in provider.availability" :key="a.id">
+      {{ a.day }} {{ a.open }} {{ a.close }}
+    </div>
+    <div class="d-flex justify-content-center align-items-end h-75">
       <div v-if="provider.rating >= 4.5">
-        <i class="mdi mdi-star-circle"></i>
-        <i class="mdi mdi-star-circle"></i>
-        <i class="mdi mdi-star-circle"></i>
-        <i class="mdi mdi-star-circle"></i>
-        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
       </div>
       <div v-if="(provider.rating >= 3.5) & (provider.rating < 4.5)">
-        <i class="mdi mdi-star-circle"></i>
-        <i class="mdi mdi-star-circle"></i>
-        <i class="mdi mdi-star-circle"></i>
-        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
       </div>
       <div v-if="(provider.rating >= 2.5) & (provider.rating < 3.5)">
-        <i class="mdi mdi-star-circle"></i>
-        <i class="mdi mdi-star-circle"></i>
-        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
       </div>
       <div v-if="(provider.rating >= 1.5) & (provider.rating < 2.5)">
-        <i class="mdi mdi-star-circle"></i>
-        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
       </div>
       <div v-if="(provider.rating >= 0.5) & (provider.rating < 1.5)">
-        <i class="mdi mdi-star-circle"></i>
+        <i class="mdi mdi-star-circle fs-2"></i>
       </div>
     </div>
   </div>
