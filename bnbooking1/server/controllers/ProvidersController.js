@@ -1,5 +1,6 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { providersService } from "../services/ProvidersService";
+import { reviewsService } from "../services/ReviewsService";
 import BaseController from "../utils/BaseController";
 
 export class ProvidersController extends BaseController{
@@ -8,6 +9,8 @@ export class ProvidersController extends BaseController{
     this.router
       .get ('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/reviews', this.getProviderReviews)
+      // .get('/:id/reviews', this.getProviderReviews)
       .use (Auth0Provider.getAuthorizedUserInfo)
       .post ('', this.create)
       .put('/:id', this.edit)
@@ -29,6 +32,16 @@ export class ProvidersController extends BaseController{
     try {
       const provider = await providersService.getById(req.params.id)
       return res.send(provider)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getProviderReviews(req, res, next){
+
+    try {
+      const reviews = await reviewsService.getProviderReviews({providerId: req.params.id})
+      return res.send(reviews)
     } catch (error) {
       next(error)
     }
