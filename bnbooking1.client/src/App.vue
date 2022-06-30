@@ -14,17 +14,23 @@
     >
       <router-link
         :to="{ name: 'Home' }"
-        class="btn text-primary selectable text-uppercase"
+        class="btn text-primary text-uppercase"
       >
-        <i class="mdi mdi-home fs-1"></i>
+        <i class="mdi mdi-home fs-1 text-primary selectable"></i>
       </router-link>
 
-      <i class="mdi mdi-magnify fs-1"></i>
+      <router-link
+        :to="{ name: 'Home' }"
+        class="btn text-primary text-uppercase"
+      >
+        <i class="mdi mdi-magnify fs-1 text-primary selectable"></i>
+      </router-link>
+
       <router-link
         :to="{ name: 'Account' }"
-        class="btn text-primary selectable text-uppercase"
+        class="btn text-primary text-uppercase"
       >
-        <i class="mdi mdi-cog fs-1"></i>
+        <i class="mdi mdi-cog fs-1 text-primary selectable"></i>
       </router-link>
     </div>
   </footer>
@@ -37,7 +43,7 @@ export default {
   name: 'App',
   setup() {
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState),
     }
   }
 }

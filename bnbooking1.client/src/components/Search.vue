@@ -1,13 +1,15 @@
 <template>
-  <div class="row">
+  <!-- <Transition name="nested">
+  </Transition> -->
+  <div class="row ms-3">
     <form @submit.prevent="searchProviders">
       <input
         v-model="search"
         type="text"
-        class="col-10"
-        placeholder="search providers"
+        class="col-11"
+        placeholder="Search Providers"
       />
-      <button class="col-2 btn btn-primary">
+      <button class="col-1 btn btn-primary">
         <i class="mdi mdi-magnify"></i>
       </button>
     </form>

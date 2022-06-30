@@ -4,10 +4,19 @@
     <div class="d-flex justify-content-end align-items-center header-bg">
       <Login />
     </div>
+    <Search />
   </header>
-  <body>
-    <div v-for="p in providers" :key="p.id" class="col-3">
-      <Provider :provider="p" />
+  <body class="bg-primary">
+    <div class="container-fluid">
+      <div class="row justify-content-around">
+        <div
+          v-for="p in providers"
+          :key="p.id"
+          class="col-md-3 p-0 m-2 rounded elevation-3"
+        >
+          <Provider :provider="p" />
+        </div>
+      </div>
     </div>
   </body>
 </template>
@@ -28,7 +37,7 @@ export default {
       }
     })
     return {
-      providers: computed(() => AppState.providers)
+      providers: computed(() => AppState.providers),
     }
   }
 }
