@@ -1,29 +1,31 @@
 <template>
-
   <main class="bg-primary">
     <router-view />
   </main>
   <footer>
-    <div class="bg-secondary footer d-flex justify-content-around align-items-center">
-                <router-link
-            :to="{ name: 'Home' }"
-            class="btn text-primary selectable text-uppercase"
-          >
-            <i class="mdi mdi-home fs-1"></i>
-          </router-link>
+    <div
+      class="
+        bg-secondary
+        footer
+        d-flex
+        justify-content-around
+        align-items-center
+      "
+    >
+      <router-link
+        :to="{ name: 'Home' }"
+        class="btn text-primary selectable text-uppercase"
+      >
+        <i class="mdi mdi-home fs-1"></i>
+      </router-link>
 
-
-
-      <i class="mdi mdi-calendar fs-1"></i>
-      <i class="mdi mdi-medal fs-1"></i>
       <i class="mdi mdi-magnify fs-1"></i>
-          <router-link
-            :to="{ name: 'Account' }"
-            class="btn text-primary selectable text-uppercase"
-          >
-            <i class="mdi mdi-cog fs-1"></i>
-          </router-link>
-
+      <router-link
+        :to="{ name: 'Account' }"
+        class="btn text-primary selectable text-uppercase"
+      >
+        <i class="mdi mdi-cog fs-1"></i>
+      </router-link>
     </div>
   </footer>
 </template>
@@ -42,14 +44,13 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-.header-bg{
+.header-bg {
   background-image: url("https://images.unsplash.com/photo-1539667468225-eebb663053e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1717&q=80");
   background-repeat: no-repeat;
   background-position: center;
-  min-height: 15vh
+  min-height: 15vh;
 }
-.footer{
+.footer {
   min-height: 10vh;
-
 }
 </style>
