@@ -8,7 +8,9 @@ export class AppointmentsController extends BaseController{
     this.router
     .use(Auth0Provider.getAuthorizedUserInfo)
     .post('', this.create)
+    .delete('/:id', this.delete)
   }
+  
   // req.body.date = new Date(req.body.date) this gets a new JSON formatted date
   async create(req, res, next) {
    try {
@@ -19,5 +21,15 @@ export class AppointmentsController extends BaseController{
    } catch (error) {
     next(error)
    }
+  }
+
+  async delete(req, res, next) {
+      try {
+        await appointmentsService.delete(req.params.id, req.userInfo.id)
+        return res.send('appointment deleted ')
+      } catch (error) {
+       next
+       (error)
+      }
   }
 }

@@ -19,7 +19,7 @@ export const ProviderSchema = new Schema(
     description: { type: String, required: true},
     location: {type: String, required: true},
     photos: [{type: String}],
-    name: {type: String},
+    name: {type: String, required: true},
     tags: [{type: String, required: true}],
     availability: [AvailabilitySchema],
     rating: {type: Number, min: 1, max: 5,},
