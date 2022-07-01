@@ -18,23 +18,13 @@ export const AvailabilitySchema = new Schema(
 )
 export const ProviderSchema = new Schema(
   {
-<<<<<<< HEAD
     coverImg: { type: String, required: true },
     bio: { type: String, required: true },
     description: { type: String, required: true },
     location: { type: String, required: true },
     photos: [{ type: String }],
-    name: { type: String },
+    name: { type: String, required: true },
     tags: [{ type: String, required: true }],
-=======
-    coverImg: { type: String, required: true},
-    bio: { type: String, required: true},
-    description: { type: String, required: true},
-    location: {type: String, required: true},
-    photos: [{type: String}],
-    name: {type: String, required: true},
-    tags: [{type: String, required: true}],
->>>>>>> 11b09baa09854fa3e5bf3c5baf33f5ea8e70537c
     availability: [AvailabilitySchema],
     rating: { type: Number, min: 1, max: 5, },
     creatorId: { type: ObjectId, required: true, ref: "Account" }
