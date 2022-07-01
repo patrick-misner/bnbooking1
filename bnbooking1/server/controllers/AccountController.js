@@ -14,7 +14,7 @@ export class AccountController extends BaseController {
  async getAccountAppointments(req, res, next) {
     try {
       const appointments = await appointmentsService.getAccountAppointments(req.userInfo.id)
-    return req.send(appointments)
+    return res.send(appointments)
     } catch (error) {
       next(error)
     }
