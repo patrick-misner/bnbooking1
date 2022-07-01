@@ -8,6 +8,13 @@ class ProvidersService {
         logger.log('getting providers', res.data)
         AppState.providers = res.data
     }
+    async createProvider(body) {
+        const res = await api.post('api/providers', body)
+        logger.log('created provider', res.data)
+        // AppState.accountProvider.push(res.data)
+        AppState.providers.push(res.data)
+        return res.data
+    }
 
     async searchProviders(query = '') {
         AppState.query = query

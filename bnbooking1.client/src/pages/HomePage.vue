@@ -1,7 +1,15 @@
 \<template>
   <header>
     <!-- <Navbar /> -->
-    <div class="d-flex justify-content-end align-items-center header-bg">
+    <div class="d-flex justify-content-around align-items-center header-bg">
+      <button
+        type="button"
+        class="btn btn-primary me-3"
+        data-bs-toggle="modal"
+        data-bs-target="#create-provider"
+      >
+        Become a Provider
+      </button>
       <Login />
     </div>
     <div class="collapse" id="collapseExample">
@@ -17,6 +25,12 @@
       </div>
     </div>
   </body>
+  <Modal id="create-provider">
+    <template #header>Become a Provider</template>
+    <template #body>
+      <ProviderForm />
+    </template>
+  </Modal>
 </template>
 
 <script>
@@ -36,7 +50,10 @@ export default {
     })
     return {
       providers: computed(() => AppState.providers),
-      searchBar: computed(() => AppState.searchBar)
+      searchBar: computed(() => AppState.searchBar),
+      async createProvider() {
+        const provider = await providersService.createProvider()
+      }
     }
   }
 }
