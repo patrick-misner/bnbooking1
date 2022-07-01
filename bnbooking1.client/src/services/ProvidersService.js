@@ -9,6 +9,7 @@ class ProvidersService {
         AppState.providers = res.data
     }
     async createProvider(body) {
+        logger.log('new provider', body)
         const res = await api.post('api/providers', body)
         logger.log('created provider', res.data)
         // AppState.accountProvider.push(res.data)

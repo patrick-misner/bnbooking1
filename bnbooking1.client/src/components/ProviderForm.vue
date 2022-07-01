@@ -32,377 +32,62 @@
     <!-- NOTE Start of availability -->
     <div>
       <label>Availability</label><br />
-      <label>Monday</label>
-      <select v-model="editable.startDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option>
-      </select>
-      <select v-model="editable.endDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option></select
-      ><br />
-      <label>Tuesday</label>
-      <select v-model="editable.startDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option>
-      </select>
-      <select v-model="editable.endDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option></select
-      ><br />
-      <label>Wednesday</label>
-      <select v-model="editable.startDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option>
-      </select>
-      <select v-model="editable.endDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option></select
-      ><br />
-      <label>Thursday</label>
-      <select v-model="editable.startDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option>
-      </select>
-      <select v-model="editable.endDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option></select
-      ><br />
-      <label>Friday</label>
-      <select v-model="editable.startDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option>
-      </select>
-      <select v-model="editable.endDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option></select
-      ><br />
-      <label>Saturday</label>
-      <select v-model="editable.startDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option>
-      </select>
-      <select v-model="editable.endDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option></select
-      ><br />
-      <label>Sunday</label>
-      <select v-model="editable.startDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option>
-      </select>
-      <select v-model="editable.endDate" name="providers" id="providers">
-        <option value="1">1:00am</option>
-        <option value="2">2:00am</option>
-        <option value="3">3:00am</option>
-        <option value="4">4:00am</option>
-        <option value="5">5:00am</option>
-        <option value="6">6:00am</option>
-        <option value="7">7:00am</option>
-        <option value="8">8:00am</option>
-        <option value="9">9:00am</option>
-        <option value="10">10:00am</option>
-        <option value="11">11:00am</option>
-        <option value="12">12:00pm</option>
-        <option value="13">1:00pm</option>
-        <option value="14">2:00pm</option>
-        <option value="15">3:00pm</option>
-        <option value="16">4:00pm</option>
-        <option value="17">5:00pm</option>
-        <option value="18">6:00pm</option>
-        <option value="19">7:00pm</option>
-        <option value="20">8:00pm</option>
-        <option value="21">9:00pm</option>
-        <option value="22">10:00pm</option>
-        <option value="23">11:00pm</option>
-        <option value="24">12:00am</option></select
-      ><br />
+      <div v-for="(day, i) in weekDays" :key="day" class="border border-bottom">
+        <label>{{ day }}</label>
+        <select
+          name="providers"
+          id="providers"
+          v-model="editable.availability[i].open"
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <select
+          v-model="editable.availability[i].oam"
+          name="providers"
+          id="providers"
+        >
+          <option value="am">AM</option>
+          <option value="pm">PM</option>
+        </select>
+        <select
+          v-model="editable.availability[i].close"
+          name="providers"
+          id="providers"
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <select
+          v-model="editable.availability[i].cam"
+          name="providers"
+          id="providers"
+        >
+          <option value="am">AM</option>
+          <option value="pm">PM</option>
+        </select>
+      </div>
+      <br />
     </div>
     <label>Bio</label>
     <input
@@ -425,22 +110,43 @@
 import { ref } from "@vue/reactivity"
 import Pop from "../utils/Pop"
 import { Modal } from "bootstrap"
-import { watchEffect } from '@vue/runtime-core'
+import { watch, watchEffect } from '@vue/runtime-core'
 import { useRouter } from 'vue-router'
 import { providersService } from '../services/ProvidersService'
+import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
 export default {
   props: { provider: { type: Object, required: false } },
   setup(props) {
-    const editable = ref({})
+    function createAllDays() {
+      logger.log("create all days ran")
+      let days = []
+      for (let i = 0; i < 7; i++) {
+        days.push({ day: i, open: 0, close: 0, oam: 'am', cam: 'am' })
+      }
+      logger.log('give me days', days)
+      return days
+    }
+    const editable = ref({
+      availability: createAllDays()
+    })
     const router = useRouter()
     watchEffect(() => {
-      editable.value = { ...props.provider }
+      // editable.value = { ...props.provider }
+
     })
     return {
+      weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       props,
       editable,
       async createProvider() {
         try {
+          // TODO turn times into correct values based on am/pm
+          let week = editable.value.availability
+          week.forEach(d => {
+            d.open = d.oam == 'am' ? d.open : parseInt(d.open) + 12
+            d.close = d.cam == 'am' ? d.close : parseInt(d.close) + 12
+          })
           const provider = await providersService.createProvider(editable.value)
           Pop.toast('Provider Created!')
           router.push({ name: 'ProviderDetails', params: { id: provider.id } })

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="post rounded elevation-2"
+    class="post rounded elevation-2 text-light"
     @click="selectProvider"
     :style="`background-image: url(${provider.coverImg})`"
   >
@@ -8,6 +8,7 @@
     <div v-for="a in provider.availability" :key="a.id">
       {{ a.day }} {{ a.open }} {{ a.close }}
     </div>
+    <!-- NOTE logic for rating -->
     <div class="d-flex justify-content-center align-items-end h-75">
       <div v-if="provider.rating >= 4.5">
         <i class="mdi mdi-star-circle fs-2"></i>
