@@ -9,9 +9,11 @@ export class AppointmentsController extends BaseController{
     .use(Auth0Provider.getAuthorizedUserInfo)
     .post('', this.create)
   }
+  // req.body.date = new Date(req.body.date) this gets a new JSON formatted date
   async create(req, res, next) {
    try {
     req.body.accountId = req.userInfo.id
+    req.body.date = new Date(req.body.date)
     const appointment = await appointmentsService.create(req.body)
     return res.send(appointment)
    } catch (error) {
