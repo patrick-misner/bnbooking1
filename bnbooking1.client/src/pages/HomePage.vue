@@ -12,15 +12,15 @@
       </button>
       <Login />
     </div>
-    <div class="collapse" id="collapseExample">
-      <Search />
-    </div>
   </header>
   <body class="bg-primary">
     <div class="container-fluid">
       <div class="row justify-content-around">
         <div v-for="p in providers" :key="p.id" class="col-md-3 p-0 m-2">
           <Provider :provider="p" />
+        </div>
+        <div class="collapse" id="collapseExample">
+          <Search />
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@ export default {
 
 <style scoped lang="scss">
 .header-bg {
-  background-image: url("https://images.unsplash.com/photo-1539667468225-eebb663053e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1717&q=80");
+  background-image: url("https://images.unsplash.com/photo-1515405295579-ba7b45403062?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGlmZmVyZW50JTIwc2hhZGVzJTIwb2YlMjBibHVlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1100&q=60");
   background-repeat: no-repeat;
   background-position: center;
   min-height: 15vh;
