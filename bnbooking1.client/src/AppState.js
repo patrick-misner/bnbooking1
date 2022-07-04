@@ -6,6 +6,7 @@ export const AppState = reactive({
   account: {},
   providers: [],
   activeProvider: {},
+  reviews: [],
   query: '',
   searchBar: false,
 })

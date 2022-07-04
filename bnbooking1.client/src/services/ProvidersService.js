@@ -8,6 +8,12 @@ class ProvidersService {
         logger.log('getting providers', res.data)
         AppState.providers = res.data
     }
+    async getProvider(providerId){
+        const res = await api.get('api/providers/' + providerId)
+        logger.log('get provider service', res.data)
+        AppState.activeProvider = res.data
+    }
+
     async createProvider(body) {
         logger.log('new provider', body)
         const res = await api.post('api/providers', body)
