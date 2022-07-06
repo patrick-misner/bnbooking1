@@ -11,7 +11,6 @@
                 
                 <Datepicker v-model="date" inline autoApply placeholder="Select Date" :minDate="new Date()" :disabledWeekDays="[6, 0]" :is24="false" minutesIncrement="60" noMinutesOverlay :startTime="startTime" format="dd-MM-yyyy" :enableTimePicker="false"></Datepicker>
         </div>
-
     </div>
     <div class="col-12">
       <div class="text-center mx-5 mb-3">

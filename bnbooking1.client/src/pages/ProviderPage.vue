@@ -1,9 +1,40 @@
 <template>
-<h1>Provider Details</h1>
-{{ provider }}
-<h1>Provider Reviews</h1>
-<h4 v-if="!reviews[0]"> No reviews for this place</h4>
-<span v-else> {{ reviews }} </span>
+<div class="container-fluid">
+    <div class="row bg-img" >
+        <div class="col-12">
+            <div class="d-flex justify-content-center">
+                <img class="img-fluid  profile-img" src="https://thiscatdoesnotexist.com" alt="">
+            </div>
+            <div class="text-center p-3">
+                <p>{{provider.name}}<i class="mdi mdi-pencil" @click="editProvider"></i></p>
+            </div>
+        </div>
+    </div>
+    <div class="row flex-row p-3 text-light text-center border-bottom border-dark border-3">
+       
+        <div class="col-3">
+            <h5><i class="mdi mdi-plus-circle p-2"></i>Add to list</h5>
+        </div>
+        <div class="col-3">
+            <h5><i class="mdi mdi-plus-circle p-2"></i>Book</h5>
+        </div>
+        <div class="col-3">
+            <h5><i class="mdi mdi-plus-circle p-2"></i>Review</h5>
+        </div>
+        <div class="col-3">
+            <h5><i class="mdi mdi-plus-circle p-2"></i>Share</h5>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <h1><span class="border-bottom border-3 border-dark">Provider Reviews</span></h1>
+</div>
+
+
+
+
+<Reviews v-for="r in reviews" :key="r.id" :review="r"  />
 
 <div class="d-flex justify-content-center mt-3">
   <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
@@ -57,4 +88,20 @@ export default {
 </script>
 
 <style>
+.bg-img{
+    background-image: url("https://placekitten.com/200");
+    background-size: cover;
+    height: 25vh;
+    background-repeat: no-repeat;
+}
+
+.profile-img{
+    border-radius: 50%;
+    height: 150px;
+
+}
+
+i{
+    color: black;
+}
 </style>
