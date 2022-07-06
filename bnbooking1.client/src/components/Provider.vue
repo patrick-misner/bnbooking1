@@ -1,6 +1,6 @@
 <template>
   <div
-    class="post rounded elevation-2 text-light"
+    class="post rounded elevation-2 text-light selectable grow"
     @click="selectProvider"
     :style="`background-image: url(${provider.coverImg})`"
   >
@@ -65,5 +65,12 @@ export default {
 }
 .mdi-star-circle {
   color: yellow;
+}
+.grow { 
+transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+transform: scale(1.01); 
 }
 </style>

@@ -11,8 +11,8 @@
 </div>
 
 
-  <Modal id="create-appointment">
-    <template #header>Book Appointment</template>
+  <Modal id="create-appointment" :formProvider="this.provider">
+    <template #header>Book Appointment with {{ provider.name }}</template>
     <template #body>
       <AppointmentForm />
     </template>
