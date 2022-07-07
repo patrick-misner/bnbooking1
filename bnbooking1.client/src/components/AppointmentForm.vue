@@ -23,8 +23,9 @@
         </div>
       </div>
 
-            <div class="col-12 mb-3">
-        <div class="d-flex justify-content-center">
+            <div class="col-12 mb-3 text-center">
+              Monday:
+        <div class="d-flex justify-content-center align-items-center">
           <Datepicker v-model="time" range minutesIncrement="60" timePicker noMinutesOverlay :startTime="startTime" :is24="false"/>
         </div>
       </div>
