@@ -23,12 +23,12 @@
         </div>
       </div>
 
-            <div class="col-12 mb-3 text-center">
+            <!-- <div class="col-12 mb-3 text-center">
               Monday:
         <div class="d-flex justify-content-center align-items-center">
           <Datepicker v-model="time" range minutesIncrement="60" timePicker noMinutesOverlay :startTime="startTime" :is24="false"/>
         </div>
-      </div>
+      </div> -->
     
       <div class="col-md-12 d-flex justify-content-center">
         <div class="mx-5 mb-3">
@@ -81,7 +81,7 @@ export default {
       date: date,
       providerId: '',
     });
-    const closedDays = [6,0];
+    const closedDays = [];
     const startTime = ref([{ hours: 9, minutes: 0 }, { hours: 17, minutes: 0}]);
     const time = ref([{
       hours: 9,
@@ -110,16 +110,6 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-      async getClosedDays(){
-        let closedDays = []
-        for (let i = 0; i < provider.availability.length; i++) {
-        const day = provider.availability[i];
-        if (day.open && day.close == 0){
-          closedDays.push(i)
-        }
-      }
-        return closedDays
-    },
     };
   }
 

@@ -5,7 +5,7 @@
         <div class="d-flex flex-row align-items-center">
           <img
             src="https://thiscatdoesnotexist.com/"
-            class="img-fluid profile-img m-3"
+            class="img-fluid profile-review-img m-3"
             alt=""
           />
           <div class="">
@@ -13,34 +13,35 @@
           </div>
         </div>
 
-        <div class="d-flex justify-content-center align-items-end h-75">
-          <div v-if="review.rating >= 4.5">
+        <div class="d-flex justify-content-between align-items-end h-75">
+          <div></div>
+          <div v-if="review.rating >= 4.5" class="ms-5">
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
           </div>
-          <div v-if="(review.rating >= 3.5) & (review.rating < 4.5)">
+          <div v-if="(review.rating >= 3.5) & (review.rating < 4.5)" class="ms-5">
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
           </div>
-          <div v-if="(review.rating >= 2.5) & (review.rating < 3.5)">
+          <div v-if="(review.rating >= 2.5) & (review.rating < 3.5)" class="ms-5">
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
           </div>
-          <div v-if="(review.rating >= 1.5) & (review.rating < 2.5)">
+          <div v-if="(review.rating >= 1.5) & (review.rating < 2.5)" class="ms-5">
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
           </div>
-          <div v-if="(review.rating >= 0.5) & (review.rating < 1.5)">
+          <div v-if="(review.rating >= 0.5) & (review.rating < 1.5)" class="ms-5">
             <i class="mdi mdi-star-circle fs-2"></i>
           </div>
+        <div class="p-3">{{formatDate(review.createdAt)}}</div>
         </div>
-        <div class="d-flex justify-content-end p-3">{{formatDate(review.createdAt)}}</div>
       </div>
     </div>
   </div>
@@ -60,7 +61,7 @@ export default {
 </script>
 
 <style>
-.profile-img {
+.profile-review-img {
   height: 75px;
   max-height: 75px;
   border-radius: 50%;
