@@ -77,7 +77,8 @@ export default {
             });
         return {
             provider: computed(() => AppState.activeProvider),
-            reviews: computed(() => AppState.reviews)
+            reviews: computed(() => AppState.reviews),
+            
         };
     },
     components: { AppointmentForm }
