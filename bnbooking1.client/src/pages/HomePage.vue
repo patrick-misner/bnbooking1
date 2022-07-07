@@ -61,9 +61,10 @@ export default {
 
 <style scoped lang="scss">
 .header-bg {
-  background-image: url("https://images.unsplash.com/photo-1515405295579-ba7b45403062?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGlmZmVyZW50JTIwc2hhZGVzJTIwb2YlMjBibHVlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1100&q=60");
+  background-image: url("https://images.unsplash.com/photo-1612706885731-329e144f5514?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
   background-repeat: no-repeat;
-  background-position: center;
+  background-size: cover;
+  background-position: 50% 71%;
   min-height: 15vh;
 }
 .footer {

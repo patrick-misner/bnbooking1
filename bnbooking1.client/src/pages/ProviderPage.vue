@@ -16,7 +16,8 @@
             <h5><i class="mdi mdi-plus-circle p-2"></i>Add to list</h5>
         </div>
         <div class="col-3">
-            <h5><i class="mdi mdi-plus-circle p-2"></i>Book</h5>
+              <button type="button" class="btn text-light selectable" data-bs-toggle="modal"
+        data-bs-target="#create-appointment"><h5><i class="mdi mdi-plus-circle p-2"></i>Book</h5></button>   
         </div>
         <div class="col-3">
             <h5><i class="mdi mdi-plus-circle p-2"></i>Review</h5>
@@ -32,13 +33,9 @@
 </div>
 
 
-
-
-<Reviews v-for="r in reviews" :key="r.id" :review="r"  />
+<Review v-for="r in reviews" :key="r.id" :review="r"  />
 
 <div class="d-flex justify-content-center mt-3">
-  <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-        data-bs-target="#create-appointment">Book</button>
 </div>
 
 
@@ -98,7 +95,6 @@ export default {
 .profile-img{
     border-radius: 50%;
     height: 150px;
-
 }
 
 i{
