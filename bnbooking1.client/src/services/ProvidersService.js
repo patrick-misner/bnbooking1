@@ -10,7 +10,6 @@ class ProvidersService {
     }
     async getProvider(providerId){
         const res = await api.get('api/providers/' + providerId)
-        logger.log('get provider service', res.data)
         AppState.activeProvider = res.data
     }
 
