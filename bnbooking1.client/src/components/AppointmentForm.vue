@@ -93,7 +93,6 @@ export default {
           closed.push(i)
         }
       }
-      logger.log('end of closedays function', closed)
       return closed
     };
     const startTime = ref([{ hours: 9, minutes: 0 }, { hours: 17, minutes: 0 }]);
@@ -104,14 +103,7 @@ export default {
       hours: 17,
       minutes: 0
     }]);
-    onMounted(() => {
 
-    });
-    watchEffect(() => {
-      if (AppState.activeProvider.id) {
-        getClosedDays()
-      }
-    })
 
     return {
       date,
