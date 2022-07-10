@@ -60,17 +60,17 @@
 
   <div class="d-flex justify-content-center mt-3"></div>
 
-  <Modal id="create-appointment" :formProvider="this.provider">
+  <Modal v-if="provider.id" id="create-appointment" :formProvider="this.provider">
     <template #header>Book Appointment with {{ provider.name }}</template>
     <template #body>
-      <AppointmentForm />
+      <AppointmentForm :provider="provider" />
     </template>
   </Modal>
 
-    <Modal id="create-review" :formProvider="this.provider">
+    <Modal id="create-review">
     <template #header>Review {{ provider.name }}</template>
     <template #body>
-      <ReviewForm />
+      <ReviewForm :provider="provider"/>
     </template>
   </Modal>
 </template>
@@ -87,18 +87,6 @@ import AppointmentForm from "../components/AppointmentForm.vue"
 export default {
   setup() {
     const route = useRoute();
-    //       function getClosedDays() {
-    //         debugger
-    //     let closedDays = []
-    //     debugger
-    //     for (let i = 0; i < AppState.activeProvider.availability.length; i++) {
-    //       const day = AppState.activeProvider.availability[i];
-    //       if (day.open && day.close == 0) {
-    //         closedDays.push(i)
-    //       }
-    //     }
-    //     return closedDays
-    //   };
     watchEffect(async () => {
       try {
         if (route.name == "Provider") {

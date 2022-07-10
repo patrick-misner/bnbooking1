@@ -23,13 +23,13 @@
         </div>
       </div>
 
-            <!-- <div class="col-12 mb-3 text-center">
+      <!-- <div class="col-12 mb-3 text-center">
               Monday:
         <div class="d-flex justify-content-center align-items-center">
           <Datepicker v-model="time" range minutesIncrement="60" timePicker noMinutesOverlay :startTime="startTime" :is24="false"/>
         </div>
       </div> -->
-    
+
       <div class="col-md-12 d-flex justify-content-center">
         <div class="mx-5 mb-3">
           <!-- {{ provider.availability }} -->
@@ -72,24 +72,46 @@ import { logger } from "../utils/Logger";
 import { appointmentsService } from '../services/AppointmentsService'
 import Pop from "../utils/Pop";
 import { Modal } from "bootstrap";
+import { onMounted, watchEffect } from "@vue/runtime-core";
 
 export default {
   components: { DatePicker },
-  setup() {
+  props: { provider: { type: Object, required: true } },
+  setup(props) {
     const date = ref();
     const editable = ref({
       date: date,
       providerId: '',
     });
-    const closedDays = [];
-    const startTime = ref([{ hours: 9, minutes: 0 }, { hours: 17, minutes: 0}]);
+    const closedDays = getClosedDays()
+    function getClosedDays() {
+      logger.log('getclosed days ran')
+      const closed = []
+      for (let i = 0; i < props.provider.availability.length; i++) {
+        const day = props.provider.availability[i];
+        if (day.open === 0 && day.close === 0) {
+          closed.push(i)
+        }
+      }
+      logger.log('end of closedays function', closed)
+      return closed
+    };
+    const startTime = ref([{ hours: 9, minutes: 0 }, { hours: 17, minutes: 0 }]);
     const time = ref([{
       hours: 9,
       minutes: 0
     }, {
       hours: 17,
       minutes: 0
-    }])
+    }]);
+    onMounted(() => {
+
+    });
+    watchEffect(() => {
+      if (AppState.activeProvider.id) {
+        getClosedDays()
+      }
+    })
 
     return {
       date,
