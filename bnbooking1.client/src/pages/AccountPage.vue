@@ -36,14 +36,14 @@ export default {
     setup() {
         onMounted(async () => {
             const userAppointments = await appointmentsService.getUserAppointments();
-           
+            // const providerAppointments = await appointmentsService.getProviderAppointments(AppState.account.id)
 
         });
-        watchEffect(async ()=> {
-          if (AppState.account.id){
-            const providerAppointments = await appointmentsService.getProviderAppointments(AppState.account.id)
-          }
-        })
+        // watchEffect(async ()=> {
+        //   if (AppState.account.id){
+        //     const providerAppointments = await appointmentsService.getProviderAppointments(AppState.account.id)
+        //   }
+        // })
         return {
             account: computed(() => AppState.account),
             userAppointments: computed(() => AppState.userAppointments),

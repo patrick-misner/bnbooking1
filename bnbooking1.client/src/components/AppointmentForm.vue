@@ -33,6 +33,9 @@
       <div class="col-md-12 d-flex justify-content-center">
         <div class="mx-5 mb-3">
           <!-- {{ provider.availability }} -->
+          <!-- generate array with these values, filter out already booked v-for -->
+          <!-- populate array (what is the open time and what is the end time)
+              a second loop and filter out appointments -->
           <select
             v-model="editable.startTime"
             class="form-select text-center"
@@ -42,7 +45,7 @@
             <option selected>Select a time</option>
             <option value="9">9:00 AM</option>
             <option value="10">10:00 AM</option>
-            <option value="11">11:00 AM</option>
+            <option value="11" disabled>11:00 AM</option>
             <option value="12">12:00 PM</option>
             <option value="13">1:00 PM</option>
             <option value="14">2:00 PM</option>

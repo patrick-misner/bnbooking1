@@ -49,7 +49,33 @@
       </div>
     </div>
   </div>
-
+  <div class="d-flex justify-content-center">
+<div class="col-md-8 map m-3 text-success" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, .5) ), url('https://c1.10times.com/map/city/91848.png');">
+<div v-for="a in provider.availability" :key="a.id">
+<div v-if="a.day == 0">
+    Sunday {{ a.open }}-{{ a.close }}
+</div>
+<div v-if="a.day == 1">
+    Monday {{ a.open }}-{{ a.close }}
+</div>
+<div v-if="a.day == 2">
+    Tuesday {{ a.open }}-{{ a.close }}
+</div>
+<div v-if="a.day == 3">
+    Wednesday {{ a.open }}-{{ a.close }}
+</div>
+<div v-if="a.day == 4">
+    Thursday {{ a.open }}-{{ a.close }}
+</div>
+<div v-if="a.day == 5">
+    Friday {{ a.open }}-{{ a.close }}
+</div>
+<div v-if="a.day == 6">
+    Saturday {{ a.open }}-{{ a.close }}
+</div>
+    </div>
+</div>
+  </div>
   <div class="text-center">
     <h1>
       <span class="border-bottom border-3 border-dark">Provider Reviews</span>
@@ -131,4 +157,12 @@ export default {
 i {
   color: black;
 }
+
+.map{
+background-size: cover;
+height: 350px;
+background-position: center;
+backdrop-filter: blur(2px);
+}
+
 </style>

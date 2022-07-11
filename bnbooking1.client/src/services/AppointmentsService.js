@@ -9,10 +9,15 @@ class AppointmentsService {
     AppState.userAppointments = res.data
   }
   async getProviderAppointments(accountId){
-    const provider = AppState.providers.find(p => p.creatorId == accountId)
-    logger.log('finding provider by the account Id', provider)
-    const res = await api.get('api/providers/' + provider.id + '/appointments')
-    return res.data
+    logger.log('finding provider by the account Id', providers)
+    let appointments = []
+    AppState.myProviders.forEach(p => {
+      appointments.push(api.get('api/providers/' + p.id + '/appointments'))
+    })
+    const res = await Promise.all(appointments)
+    // const res = await api.get('api/providers/' + provider.id + '/appointments')
+    logger.log('get provider appts', res.data)
+    AppState.providerAppointments = res.data
   }
   async createAppointment(body) {
     body.providerId = AppState.activeProvider.id
