@@ -29,5 +29,11 @@ class ProvidersService {
         logger.log('searching Providers', res.data)
         AppState.providers = res.data
     }
+
+    // async getAccountProvider(accountId){
+    //     const provider = await api.get('api/providers')
+    //     AppState.providers = AppState.providers.find(p => p.creatorId == accountId)
+    //     logger.log()
+    // }
 }
 export const providersService = new ProvidersService()

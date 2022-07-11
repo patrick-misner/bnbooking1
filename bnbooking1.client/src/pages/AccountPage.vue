@@ -10,6 +10,10 @@
       <div class="col-12">
 
         <div class="bg-secondary text-center elevation-2 rounded py-3">
+          <h4>My Client Appointments</h4>  
+        </div>
+
+        <div class="bg-secondary text-center elevation-2 rounded py-3">
           <h4>My Appointments</h4>  
         </div>
 
@@ -22,20 +26,30 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, watchEffect } from 'vue'
 import { AppState } from '../AppState'
 import { appointmentsService } from "../services/AppointmentsService"
 import AppointmentForm from "../components/AppointmentForm.vue"
+import { providersService } from "../services/ProvidersService"
 export default {
     name: "Account",
     setup() {
         onMounted(async () => {
             const userAppointments = await appointmentsService.getUserAppointments();
-            // await appointmentsService.getProviderAppointments(account.id)
+           
+
         });
+        watchEffect(async ()=> {
+          if (AppState.account.id){
+            const providerAppointments = await appointmentsService.getProviderAppointments(AppState.account.id)
+          }
+        })
         return {
             account: computed(() => AppState.account),
             userAppointments: computed(() => AppState.userAppointments),
+            providerAppointments: computed(() => {
+              AppState.providerAppointments
+            })
         };
     },
     components: { AppointmentForm }

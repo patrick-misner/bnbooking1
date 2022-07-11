@@ -3,6 +3,7 @@ import { AppState } from '../AppState'
 import { audience, clientId, domain } from '../env'
 import { router } from '../router'
 import { accountService } from './AccountService'
+import { appointmentsService } from "./AppointmentsService"
 import { api } from './AxiosService'
 import { socketService } from './SocketService'
 
