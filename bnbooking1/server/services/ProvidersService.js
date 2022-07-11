@@ -51,6 +51,10 @@ class ProvidersService {
     return update
   }
 
+  async getAccountProviders(accountId){
+    const providers = await dbContext.Providers.find({creatorId: accountId})
+    return providers
+  }
   async delete(providerId, userId){
     const provider = await this.getById(providerId)
     if (provider.creatorId.toString() != userId){
