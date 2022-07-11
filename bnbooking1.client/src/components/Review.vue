@@ -14,7 +14,6 @@
         </div>
 
         <div class="d-flex justify-content-between align-items-end h-75">
-          <div></div>
           <div v-if="review.rating >= 4.5" class="ms-5">
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
@@ -22,25 +21,47 @@
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
           </div>
-          <div v-if="(review.rating >= 3.5) & (review.rating < 4.5)" class="ms-5">
+          <div
+            v-if="(review.rating >= 3.5) & (review.rating < 4.5)"
+            class="ms-5"
+          >
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
+            <i class="mdi mdi-star-circle grey fs-2"></i>
           </div>
-          <div v-if="(review.rating >= 2.5) & (review.rating < 3.5)" class="ms-5">
+          <div
+            v-if="(review.rating >= 2.5) & (review.rating < 3.5)"
+            class="ms-5"
+          >
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
+            <i class="mdi mdi-star-circle grey fs-2"></i>
+            <i class="mdi mdi-star-circle grey fs-2"></i>
           </div>
-          <div v-if="(review.rating >= 1.5) & (review.rating < 2.5)" class="ms-5">
+          <div
+            v-if="(review.rating >= 1.5) & (review.rating < 2.5)"
+            class="ms-5"
+          >
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
+            <i class="mdi mdi-star-circle grey fs-2"></i>
+            <i class="mdi mdi-star-circle grey fs-2"></i>
+            <i class="mdi mdi-star-circle grey fs-2"></i>
           </div>
-          <div v-if="(review.rating >= 0.5) & (review.rating < 1.5)" class="ms-5">
+          <div
+            v-if="(review.rating >= 0.5) & (review.rating < 1.5)"
+            class="ms-5"
+          >
             <i class="mdi mdi-star-circle fs-2"></i>
+            <i class="mdi mdi-star-circle grey fs-2"></i>
+            <i class="mdi mdi-star-circle grey fs-2"></i>
+            <i class="mdi mdi-star-circle grey fs-2"></i>
+            <i class="mdi mdi-star-circle grey fs-2"></i>
           </div>
-        <div class="p-3">{{formatDate(review.createdAt)}}</div>
+          <div class="p-3">{{ formatDate(review.createdAt) }}</div>
         </div>
       </div>
     </div>
@@ -50,9 +71,9 @@
 <script>
 export default {
   props: { review: { type: Object, required: true } },
-  setup(props){
+  setup(props) {
     return {
-      formatDate(rawDate){
+      formatDate(rawDate) {
         return new Date(rawDate).toLocaleDateString()
       }
     }
@@ -65,5 +86,9 @@ export default {
   height: 75px;
   max-height: 75px;
   border-radius: 50%;
+}
+
+.grey {
+  color: black;
 }
 </style>

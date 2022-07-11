@@ -22,18 +22,28 @@
         <i class="mdi mdi-star-circle fs-2"></i>
         <i class="mdi mdi-star-circle fs-2"></i>
         <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle grey fs-2"></i>
       </div>
       <div v-if="(provider.rating >= 2.5) & (provider.rating < 3.5)">
         <i class="mdi mdi-star-circle fs-2"></i>
         <i class="mdi mdi-star-circle fs-2"></i>
         <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle grey fs-2"></i>
+        <i class="mdi mdi-star-circle grey fs-2"></i>
       </div>
       <div v-if="(provider.rating >= 1.5) & (provider.rating < 2.5)">
         <i class="mdi mdi-star-circle fs-2"></i>
         <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle grey fs-2"></i>
+        <i class="mdi mdi-star-circle grey fs-2"></i>
+        <i class="mdi mdi-star-circle grey fs-2"></i>
       </div>
       <div v-if="(provider.rating >= 0.5) & (provider.rating < 1.5)">
         <i class="mdi mdi-star-circle fs-2"></i>
+        <i class="mdi mdi-star-circle grey fs-2"></i>
+        <i class="mdi mdi-star-circle grey fs-2"></i>
+        <i class="mdi mdi-star-circle grey fs-2"></i>
+        <i class="mdi mdi-star-circle grey fs-2"></i>
       </div>
     </div>
   </div>
@@ -66,11 +76,16 @@ export default {
 .mdi-star-circle {
   color: yellow;
 }
-.grow { 
-transition: all .2s ease-in-out; 
+
+.grey {
+  color: black;
 }
 
-.grow:hover { 
-transform: scale(1.01); 
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.01);
 }
 </style>
