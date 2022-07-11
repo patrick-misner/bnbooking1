@@ -15,7 +15,11 @@
 
         <div class="d-flex justify-content-between align-items-end h-75">
           <div>
-            <i  v-if="review.creator.id == account.id" class="selectable fs-5 mdi mdi-delete-forever text-danger" @click="deleteReview(review.id)"></i>
+            <i
+              v-if="review.creator.id == account.id"
+              class="selectable fs-5 mdi mdi-delete-forever text-danger"
+              @click="deleteReview(review.id)"
+            ></i>
           </div>
           <div v-if="review.rating >= 4.5" class="ms-5">
             <i class="mdi mdi-star-circle fs-2"></i>
@@ -80,13 +84,13 @@ export default {
   props: { review: { type: Object, required: true } },
   setup(props) {
     return {
-      account: computed(()=> AppState.account),
+      account: computed(() => AppState.account),
       formatDate(rawDate) {
         return new Date(rawDate).toLocaleDateString()
       },
-      async deleteReview(reviewId){
+      async deleteReview(reviewId) {
         try {
-          if(await Pop.confirm('Are you sure you want to delete this review?')){
+          if (await Pop.confirm('Are you sure you want to delete this review?')) {
             await reviewsService.deleteReview(reviewId)
             Pop.toast('Review deleted', 'success')
           }
@@ -109,5 +113,6 @@ export default {
 
 .grey {
   color: black;
+  opacity: 20%;
 }
 </style>
