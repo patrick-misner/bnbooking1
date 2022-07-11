@@ -15,6 +15,10 @@ class ReviewsService{
     AppState.reviews.unshift(res.data)
     return res.data
 }
+async deleteReview(reviewId){
+  const res = await api.delete('api/reviews/' + reviewId)
+  AppState.reviews = AppState.reviews.filter(r => r.id != reviewId)
+}
 }
 
 export const reviewsService = new ReviewsService()

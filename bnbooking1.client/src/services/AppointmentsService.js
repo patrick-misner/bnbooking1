@@ -19,6 +19,11 @@ class AppointmentsService {
     return res.data
   }
 
+  async deleteAppointment(appointmentId){
+    const res = await api.delete('api/appointments/' + appointmentId)
+    AppState.userAppointments = AppState.userAppointments.filter(a => a.id != appointmentId)
+  }
+
 }
 
 export const appointmentsService = new AppointmentsService()

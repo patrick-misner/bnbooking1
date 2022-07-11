@@ -14,6 +14,9 @@
         </div>
 
         <div class="d-flex justify-content-between align-items-end h-75">
+          <div>
+            <i  v-if="review.creator.id == account.id" class="selectable fs-5 mdi mdi-delete-forever text-danger" @click="deleteReview(review.id)"></i>
+          </div>
           <div v-if="review.rating >= 4.5" class="ms-5">
             <i class="mdi mdi-star-circle fs-2"></i>
             <i class="mdi mdi-star-circle fs-2"></i>
@@ -69,12 +72,28 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity"
+import { AppState } from "../AppState"
+import { reviewsService } from "../services/ReviewsService"
+import Pop from "../utils/Pop"
 export default {
   props: { review: { type: Object, required: true } },
   setup(props) {
     return {
+      account: computed(()=> AppState.account),
       formatDate(rawDate) {
         return new Date(rawDate).toLocaleDateString()
+      },
+      async deleteReview(reviewId){
+        try {
+          if(await Pop.confirm('Are you sure you want to delete this review?')){
+            await reviewsService.deleteReview(reviewId)
+            Pop.toast('Review deleted', 'success')
+          }
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
       }
     }
   }
