@@ -8,16 +8,18 @@ class AppointmentsService {
     const res = await api.get('/account/appointments')
     AppState.userAppointments = res.data
   }
-  async getProviderAppointments(accountId){
-    logger.log('finding provider by the account Id', providers)
+  async getProviderAppointments(){
     let appointments = []
     AppState.myProviders.forEach(p => {
       appointments.push(api.get('api/providers/' + p.id + '/appointments'))
     })
     const res = await Promise.all(appointments)
-    // const res = await api.get('api/providers/' + provider.id + '/appointments')
-    logger.log('get provider appts', res.data)
-    AppState.providerAppointments = res.data
+    let allAppointments = []
+    res.forEach(r => {
+      allAppointments.push(...r.data)
+    })
+    AppState.providerAppointments = allAppointments
+    logger.log('allappointments', AppState.providerAppointments)
   }
   async createAppointment(body) {
     body.providerId = AppState.activeProvider.id
