@@ -8,6 +8,7 @@
         <div class="d-flex justify-content-center">
           <Datepicker
             v-model="date"
+            @update:modelValue="getAvailableTimes(date)"
             inline
             autoApply
             placeholder="Select Date"
@@ -43,7 +44,7 @@
             aria-label="Default select example"
           >
             <option selected>Select a time</option>
-            <option value="9">9:00 AM</option>
+            <option value="9" v-for="p in provider.availability" :key="p.id">{{ p.open }}</option>
             <option value="10">10:00 AM</option>
             <option value="11" disabled>11:00 AM</option>
             <option value="12">12:00 PM</option>
@@ -88,6 +89,7 @@ export default {
       startTime: 'Select a time'
     });
     const closedDays = getClosedDays()
+    // const availableTimes = getAvailableTimes()
     function getClosedDays() {
       logger.log('getclosed days ran')
       const closed = []
@@ -115,6 +117,7 @@ export default {
       editable,
       closedDays,
       time,
+      // availableTimes,
       provider: computed(() => AppState.activeProvider),
       async createAppointment() {
         try {
@@ -128,6 +131,15 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
+      getAvailableTimes(date) {
+        let day = date.getDay()
+      // logger.log('getAvailable times ran', day)
+        let open = this.provider.availability[day].open
+        let close = this.provider.availability[day].close
+        const range = [...Array(close - open + 1).keys()].map(x => x + open);
+        logger.log('available times', range)
+
+    }
     };
   }
 

@@ -17,10 +17,15 @@ class AppointmentsService {
 
   async delete(appointmentId, userId) {
     const appointment = await dbContext.Appointments.findById(appointmentId)
+    // if (appointment.providerId.toString() != dbContext.Providers.find({creatorId: userId})){
+    //   awa
+    // }
     if (appointment.accountId.toString() != userId) {
       throw new BadRequest('You can not delete an appointment that is now yours')
     }
     await appointment.remove()
+
+
     return 'appointment canceled'
   }
 
