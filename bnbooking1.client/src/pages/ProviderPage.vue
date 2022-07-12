@@ -26,10 +26,10 @@
         border-bottom border-dark border-3
       "
     >
-      <div class="col-3">
+      <div class="col-2">
         <h5><i class="mdi mdi-plus-circle p-2"></i>Add to list</h5>
       </div>
-      <div class="col-3">
+      <div class="col-2">
         <button
           type="button"
           class="btn text-light selectable"
@@ -39,7 +39,44 @@
           <h5><i class="mdi mdi-plus-circle p-2"></i>Book</h5>
         </button>
       </div>
-      <div class="col-3">
+      <div class="col-4">
+        <div v-if="provider.rating >= 4.5">
+          <i class="mdi mdi-star-circle fs-3"></i>
+          <i class="mdi mdi-star-circle fs-3"></i>
+          <i class="mdi mdi-star-circle fs-3"></i>
+          <i class="mdi mdi-star-circle fs-3"></i>
+          <i class="mdi mdi-star-circle fs-3"></i>
+        </div>
+        <div v-if="(provider.rating >= 3.5) & (provider.rating < 4.5)">
+          <i class="mdi mdi-star-circle fs-2"></i>
+          <i class="mdi mdi-star-circle fs-2"></i>
+          <i class="mdi mdi-star-circle fs-2"></i>
+          <i class="mdi mdi-star-circle fs-2"></i>
+          <i class="mdi mdi-star-circle grey fs-2"></i>
+        </div>
+        <div v-if="(provider.rating >= 2.5) & (provider.rating < 3.5)">
+          <i class="mdi mdi-star-circle fs-2"></i>
+          <i class="mdi mdi-star-circle fs-2"></i>
+          <i class="mdi mdi-star-circle fs-2"></i>
+          <i class="mdi mdi-star-circle grey fs-2"></i>
+          <i class="mdi mdi-star-circle grey fs-2"></i>
+        </div>
+        <div v-if="(provider.rating >= 1.5) & (provider.rating < 2.5)">
+          <i class="mdi mdi-star-circle fs-2"></i>
+          <i class="mdi mdi-star-circle fs-2"></i>
+          <i class="mdi mdi-star-circle grey fs-2"></i>
+          <i class="mdi mdi-star-circle grey fs-2"></i>
+          <i class="mdi mdi-star-circle grey fs-2"></i>
+        </div>
+        <div v-if="(provider.rating >= 0.5) & (provider.rating < 1.5)">
+          <i class="mdi mdi-star-circle fs-2"></i>
+          <i class="mdi mdi-star-circle grey fs-2"></i>
+          <i class="mdi mdi-star-circle grey fs-2"></i>
+          <i class="mdi mdi-star-circle grey fs-2"></i>
+          <i class="mdi mdi-star-circle grey fs-2"></i>
+        </div>
+      </div>
+      <div class="col-2">
         <button
           type="button"
           class="btn text-light selectable"
@@ -50,7 +87,7 @@
           <h5><i class="mdi mdi-plus-circle p-2"></i>Review</h5>
         </button>
       </div>
-      <div class="col-3">
+      <div class="col-2">
         <h5><i class="mdi mdi-plus-circle p-2"></i>Share</h5>
       </div>
     </div>
@@ -108,7 +145,7 @@
 </template>
 
 <script>
-import { computed, onUnmounted, watchEffect } from "@vue/runtime-core"
+import { computed, onMounted, onUnmounted, watchEffect } from "@vue/runtime-core"
 import { useRoute } from "vue-router"
 import Pop from "../utils/Pop"
 import { logger } from "../utils/Logger"
@@ -117,6 +154,7 @@ import { reviewsService } from "../services/ReviewsService"
 import { AppState } from "../AppState"
 export default {
   setup() {
+    // const averageRating = 
     const route = useRoute();
     watchEffect(async () => {
       try {
