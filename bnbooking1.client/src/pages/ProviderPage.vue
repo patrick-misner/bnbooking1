@@ -45,6 +45,7 @@
           class="btn text-light selectable"
           data-bs-toggle="modal"
           data-bs-target="#create-review"
+          v-if="!isProvider"
         >
           <h5><i class="mdi mdi-plus-circle p-2"></i>Review</h5>
         </button>
@@ -67,13 +68,13 @@
       "
     >
       <div v-for="a in provider.availability" :key="a.id">
-        <div v-if="a.day == 0">Sunday {{ a.open }}-{{ a.close }}</div>
-        <div v-if="a.day == 1">Monday {{ a.open }}-{{ a.close }}</div>
-        <div v-if="a.day == 2">Tuesday {{ a.open }}-{{ a.close }}</div>
-        <div v-if="a.day == 3">Wednesday {{ a.open }}-{{ a.close }}</div>
-        <div v-if="a.day == 4">Thursday {{ a.open }}-{{ a.close }}</div>
-        <div v-if="a.day == 5">Friday {{ a.open }}-{{ a.close }}</div>
-        <div v-if="a.day == 6">Saturday {{ a.open }}-{{ a.close }}</div>
+        <div v-if="a.day == 0">Sunday {{ a.open }} - {{ a.close }}</div>
+        <div v-if="a.day == 1">Monday {{ a.open }} - {{ a.close }}</div>
+        <div v-if="a.day == 2">Tuesday {{ a.open }} - {{ a.close }}</div>
+        <div v-if="a.day == 3">Wednesday {{ a.open }} - {{ a.close }}</div>
+        <div v-if="a.day == 4">Thursday {{ a.open }} - {{ a.close }}</div>
+        <div v-if="a.day == 5">Friday {{ a.open }} - {{ a.close }}</div>
+        <div v-if="a.day == 6">Saturday {{ a.open }} - {{ a.close }}</div>
       </div>
     </div>
   </div>
@@ -114,7 +115,6 @@ import { logger } from "../utils/Logger"
 import { providersService } from "../services/ProvidersService"
 import { reviewsService } from "../services/ReviewsService"
 import { AppState } from "../AppState"
-import AppointmentForm from "../components/AppointmentForm.vue"
 export default {
   setup() {
     const route = useRoute();
@@ -122,7 +122,6 @@ export default {
       try {
         if (route.name == "Provider") {
           await providersService.getProvider(route.params.id);
-          //   getClosedDays();
           await reviewsService.getProviderReviews(route.params.id);
         }
       }
@@ -137,10 +136,10 @@ export default {
       });
     return {
       provider: computed(() => AppState.activeProvider),
+      isProvider: computed(() => AppState.account.id === AppState.activeProvider.creatorId),
       reviews: computed(() => AppState.reviews),
     };
   },
-  components: { AppointmentForm }
 }
 </script>
 

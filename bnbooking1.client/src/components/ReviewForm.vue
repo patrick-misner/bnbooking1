@@ -27,22 +27,25 @@ import { AppState } from "../AppState"
 import { reviewsService } from "../services/ReviewsService"
 import Pop from "../utils/Pop"
 import { Modal } from "bootstrap"
+import { useRoute } from 'vue-router'
 export default {
   setup() {
-    const hasReview = computed(() => AppState.reviews.find(r => r.accountId == AppState.account.id))
+    const hasReview = computed(() => AppState.reviews.find(r => r.creatorId == AppState.account.id))
     const editable = ref({
       providerId: '',
     })
     return {
       provider: computed(() => AppState.activeProvider),
+      reviews: computed(() => AppState.reviews),
+      // account: computed(() => AppState.account),
       editable,
       hasReview,
       async createReview() {
         try {
           if (hasReview.value) {
-            Pop.toast('Place already reviewed')
+            Pop.toast('Place already reviewed, nice try')
           } else {
-            const provider = await reviewsService.createReview(editable.value)
+            const review = await reviewsService.createReview(editable.value)
             Pop.toast('Review Created!', 'success')
             Modal.getOrCreateInstance(document.getElementById('create-review')).hide()
           }
