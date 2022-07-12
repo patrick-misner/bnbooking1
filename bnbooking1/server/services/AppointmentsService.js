@@ -8,7 +8,7 @@ class AppointmentsService {
     return appointments
   }
   async getProviderAppointments(providerId) {
-    const appointments = await dbContext.Appointments.find(providerId).sort({ createdAt: -1 }).populate('account', 'name picture')
+    const appointments = await dbContext.Appointments.find(providerId).sort({ date: 1 }).populate('account', 'name picture').populate('provider', 'name')
     return appointments
   }
   async create(body) {
