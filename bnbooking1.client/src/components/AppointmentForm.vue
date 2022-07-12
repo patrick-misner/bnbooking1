@@ -36,11 +36,11 @@
           <!-- generate array with these values, filter out already booked v-for -->
           <!-- populate array (what is the open time and what is the end time)
               a second loop and filter out appointments -->
+
           <select
             v-model="editable.startTime"
-            class="form-select text-center"
-            size="3"
-            aria-label="size 3 select example"
+            class="form-select"
+            aria-label="Default select example"
           >
             <option selected>Select a time</option>
             <option value="9">9:00 AM</option>
@@ -85,6 +85,7 @@ export default {
     const editable = ref({
       date: date,
       providerId: '',
+      startTime: 'Select a time'
     });
     const closedDays = getClosedDays()
     function getClosedDays() {
