@@ -16,10 +16,8 @@
       min="1"
       max="5"
     />
-        <button type="button" data-bs-dismiss="modal">cancel</button>
-      <button type="button" @click="createReview">
-        Create!
-      </button>
+    <button type="button" data-bs-dismiss="modal">cancel</button>
+    <button type="button" @click="createReview">Create!</button>
   </form>
 </template>
 
@@ -31,17 +29,23 @@ import Pop from "../utils/Pop"
 import { Modal } from "bootstrap"
 export default {
   setup() {
-        const editable = ref({
-          providerId: '',
+    const hasReview = computed(() => AppState.reviews.find(r => r.accountId == AppState.account.id))
+    const editable = ref({
+      providerId: '',
     })
     return {
       provider: computed(() => AppState.activeProvider),
       editable,
+      hasReview,
       async createReview() {
         try {
-          const provider = await reviewsService.createReview(editable.value)
-          Pop.toast('Review Created!', 'success')
-          Modal.getOrCreateInstance(document.getElementById('create-review')).hide()
+          if (hasReview.value) {
+            Pop.toast('Place already reviewed')
+          } else {
+            const provider = await reviewsService.createReview(editable.value)
+            Pop.toast('Review Created!', 'success')
+            Modal.getOrCreateInstance(document.getElementById('create-review')).hide()
+          }
         } catch (error) {
           Pop.error(error)
         }

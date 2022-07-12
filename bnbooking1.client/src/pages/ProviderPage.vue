@@ -40,8 +40,13 @@
         </button>
       </div>
       <div class="col-3">
-        <button type="button" class="btn text-light selectable" data-bs-toggle="modal" data-bs-target="#create-review">
-            <h5><i class="mdi mdi-plus-circle p-2"></i>Review</h5>
+        <button
+          type="button"
+          class="btn text-light selectable"
+          data-bs-toggle="modal"
+          data-bs-target="#create-review"
+        >
+          <h5><i class="mdi mdi-plus-circle p-2"></i>Review</h5>
         </button>
       </div>
       <div class="col-3">
@@ -50,31 +55,27 @@
     </div>
   </div>
   <div class="d-flex justify-content-center">
-<div class="col-md-8 map m-3 text-success" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, .5) ), url('https://c1.10times.com/map/city/91848.png');">
-<div v-for="a in provider.availability" :key="a.id">
-<div v-if="a.day == 0">
-    Sunday {{ a.open }}-{{ a.close }}
-</div>
-<div v-if="a.day == 1">
-    Monday {{ a.open }}-{{ a.close }}
-</div>
-<div v-if="a.day == 2">
-    Tuesday {{ a.open }}-{{ a.close }}
-</div>
-<div v-if="a.day == 3">
-    Wednesday {{ a.open }}-{{ a.close }}
-</div>
-<div v-if="a.day == 4">
-    Thursday {{ a.open }}-{{ a.close }}
-</div>
-<div v-if="a.day == 5">
-    Friday {{ a.open }}-{{ a.close }}
-</div>
-<div v-if="a.day == 6">
-    Saturday {{ a.open }}-{{ a.close }}
-</div>
+    <div
+      class="col-md-8 map m-3 text-success"
+      style="
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url('https://c1.10times.com/map/city/91848.png');
+      "
+    >
+      <div v-for="a in provider.availability" :key="a.id">
+        <div v-if="a.day == 0">Sunday {{ a.open }}-{{ a.close }}</div>
+        <div v-if="a.day == 1">Monday {{ a.open }}-{{ a.close }}</div>
+        <div v-if="a.day == 2">Tuesday {{ a.open }}-{{ a.close }}</div>
+        <div v-if="a.day == 3">Wednesday {{ a.open }}-{{ a.close }}</div>
+        <div v-if="a.day == 4">Thursday {{ a.open }}-{{ a.close }}</div>
+        <div v-if="a.day == 5">Friday {{ a.open }}-{{ a.close }}</div>
+        <div v-if="a.day == 6">Saturday {{ a.open }}-{{ a.close }}</div>
+      </div>
     </div>
-</div>
   </div>
   <div class="text-center">
     <h1>
@@ -86,17 +87,21 @@
 
   <div class="d-flex justify-content-center mt-3"></div>
 
-  <Modal v-if="provider.id" id="create-appointment" :formProvider="this.provider">
+  <Modal
+    v-if="provider.id"
+    id="create-appointment"
+    :formProvider="this.provider"
+  >
     <template #header>Book Appointment with {{ provider.name }}</template>
     <template #body>
       <AppointmentForm :provider="provider" />
     </template>
   </Modal>
 
-    <Modal id="create-review">
+  <Modal id="create-review">
     <template #header>Review {{ provider.name }}</template>
     <template #body>
-      <ReviewForm :provider="provider"/>
+      <ReviewForm :provider="provider" />
     </template>
   </Modal>
 </template>
@@ -117,7 +122,7 @@ export default {
       try {
         if (route.name == "Provider") {
           await providersService.getProvider(route.params.id);
-        //   getClosedDays();
+          //   getClosedDays();
           await reviewsService.getProviderReviews(route.params.id);
         }
       }
@@ -153,16 +158,14 @@ export default {
   min-height: 150px;
 }
 
-
 i {
   color: black;
 }
 
-.map{
-background-size: cover;
-height: 350px;
-background-position: center;
-backdrop-filter: blur(2px);
+.map {
+  background-size: cover;
+  height: 350px;
+  background-position: center;
+  backdrop-filter: blur(2px);
 }
-
 </style>
