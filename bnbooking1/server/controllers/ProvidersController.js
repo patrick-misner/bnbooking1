@@ -4,24 +4,22 @@ import { providersService } from "../services/ProvidersService";
 import { reviewsService } from "../services/ReviewsService";
 import BaseController from "../utils/BaseController";
 
-export class ProvidersController extends BaseController{
+export class ProvidersController extends BaseController {
   constructor() {
     super('api/providers')
     this.router
-      .get ('', this.getAll)
+      .get('', this.getAll)
       .get('/:id', this.getById)
       .get('/:id/reviews', this.getProviderReviews)
       // .get('/:id/reviews', this.getProviderReviews)
-      .use (Auth0Provider.getAuthorizedUserInfo)
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:id/appointments', this.getProviderAppointments)
-      .post ('', this.create)
+      .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
   }
-  
- 
 
-  async getAll (req, res, next){
+  async getAll(req, res, next) {
     try {
       const providers = await providersService.find(req.query.query)
       return res.send(providers)
@@ -30,7 +28,7 @@ export class ProvidersController extends BaseController{
     }
   }
 
-  async getById (req, res, next){
+  async getById(req, res, next) {
     try {
       const provider = await providersService.getById(req.params.id)
       return res.send(provider)
@@ -39,10 +37,10 @@ export class ProvidersController extends BaseController{
     }
   }
 
-  async getProviderReviews(req, res, next){
+  async getProviderReviews(req, res, next) {
 
     try {
-      const reviews = await reviewsService.getProviderReviews({providerId: req.params.id})
+      const reviews = await reviewsService.getProviderReviews({ providerId: req.params.id })
       return res.send(reviews)
     } catch (error) {
       next(error)
@@ -50,19 +48,18 @@ export class ProvidersController extends BaseController{
   }
 
   async getProviderAppointments(req, res, next) {
-      try {
-        req.body.creatorId = req.userInfo.id
-        const appointments = await appointmentsService.getProviderAppointments({providerId: req.params.id})
-        return res.send(appointments)
-        
-      } catch (error) {
-      next
-      (error)
-      }
-  }
- 
+    try {
+      req.body.creatorId = req.userInfo.id
+      const appointments = await appointmentsService.getProviderAppointments({ providerId: req.params.id })
+      return res.send(appointments)
 
-  async create (req, res, next){
+    } catch (error) {
+      next(error)
+    }
+  }
+
+
+  async create(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
       const provider = await providersService.create(req.body)
@@ -78,18 +75,18 @@ export class ProvidersController extends BaseController{
       const update = await providersService.edit(req.params.id, req.body)
       return res.send(update)
     } catch (error) {
-     next(error)
+      next(error)
     }
 
   }
 
   async delete(req, res, next) {
-      try {
-        const message = await providersService.delete(req.params.id, req.userInfo.id)
-        res.send(message)
-      } catch (error) {
-        next(error)
-      }
+    try {
+      const message = await providersService.delete(req.params.id, req.userInfo.id)
+      res.send(message)
+    } catch (error) {
+      next(error)
+    }
   }
 
 }
