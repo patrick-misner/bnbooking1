@@ -41,6 +41,7 @@ import { providersService } from '../services/ProvidersService'
 export default {
   name: 'Home',
   setup() {
+    const isProvider = computed(() => AppState.providers.find(p => p.creatorId == AppState.account.id))
     onMounted(async () => {
       try {
         await providersService.getProviders()
@@ -49,6 +50,7 @@ export default {
       }
     })
     return {
+      isProvider,
       providers: computed(() => AppState.providers),
       searchBar: computed(() => AppState.searchBar),
       async createProvider() {

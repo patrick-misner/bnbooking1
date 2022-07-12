@@ -79,7 +79,7 @@ export default {
 
 .grey {
   color: black;
-  opacity: 20%;
+  opacity: 30%;
 }
 
 .grow {

@@ -89,7 +89,7 @@ export default {
     });
     const closedDays = getClosedDays()
     function getClosedDays() {
-      logger.log('getclosed days ran')
+      logger.log('get closed days')
       const closed = []
       for (let i = 0; i < props.provider.availability.length; i++) {
         const day = props.provider.availability[i];
