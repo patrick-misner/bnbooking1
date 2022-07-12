@@ -10,8 +10,12 @@
       <div class="col-12">
 
         <div class="bg-secondary text-center elevation-2 rounded py-3">
-          <h4>My Client Appointments</h4>  
+          <h4>My Client Appointments</h4> 
         </div>
+
+        <div class="col-12">
+        <Appointment v-for="a in providerAppointments" :key="a.id" :appointment="a"/>
+       </div>
 
         <div class="bg-secondary text-center elevation-2 rounded py-3">
           <h4>My Appointments</h4>  
@@ -36,20 +40,18 @@ export default {
     setup() {
         onMounted(async () => {
             const userAppointments = await appointmentsService.getUserAppointments();
-            // const providerAppointments = await appointmentsService.getProviderAppointments(AppState.account.id)
+            // const providerAppointments = await appointmentsService.getProviderAppointments()
 
         });
         // watchEffect(async ()=> {
         //   if (AppState.account.id){
-        //     const providerAppointments = await appointmentsService.getProviderAppointments(AppState.account.id)
+        //     const providerAppointments = await appointmentsService.getProviderAppointments()
         //   }
         // })
         return {
             account: computed(() => AppState.account),
             userAppointments: computed(() => AppState.userAppointments),
-            providerAppointments: computed(() => {
-              AppState.providerAppointments
-            })
+            providerAppointments: computed(() => AppState.providerAppointments)
         };
     },
     components: { AppointmentForm }

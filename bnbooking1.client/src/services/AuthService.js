@@ -5,6 +5,7 @@ import { router } from '../router'
 import { accountService } from './AccountService'
 import { appointmentsService } from "./AppointmentsService"
 import { api } from './AxiosService'
+import { providersService } from "./ProvidersService"
 import { socketService } from './SocketService'
 
 export const AuthService = initialize({
@@ -29,9 +30,9 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   socketService.authenticate(AuthService.bearer)
   // NOTE if there is something you want to do once the user is authenticated, place that here
   // TODO Get my providers (/account/providers/)
-  
+  await providersService.getMyProviders(AppState.account.id)
   // get my provider appointments 
-  // const providerAppointments = await appointmentsService.getProviderAppointments(AppState.account.id)
+  await appointmentsService.getProviderAppointments()
 })
 
 async function refreshAuthToken(config) {
