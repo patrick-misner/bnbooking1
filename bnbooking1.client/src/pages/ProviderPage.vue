@@ -164,7 +164,7 @@ export default {
     })
     watchEffect(async () => {
       try {
-        if (route.name == "Provider" && AppState.account.id) {
+        if (route.name == "Provider") {
           await providersService.getProvider(route.params.id);
           await reviewsService.getProviderReviews(route.params.id);
           await appointmentsService.getProviderAppointments(route.params.id);
