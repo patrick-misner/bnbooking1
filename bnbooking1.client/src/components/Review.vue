@@ -4,7 +4,8 @@
       <div class="elevation-2 bg-grey m-3 rounded">
         <div class="d-flex flex-row align-items-center">
           <img
-            src="https://thiscatdoesnotexist.com/"
+            :title="review.creator.name"
+            :src="review.creator.picture"
             class="img-fluid profile-review-img m-3"
             alt=""
           />

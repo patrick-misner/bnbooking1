@@ -11,6 +11,7 @@ export const AppState = reactive({
   availableTimes: [],
   myProviders: [],
   reviews: [],
+  providerReviews: {},
   query: '',
   searchBar: false,
 })
