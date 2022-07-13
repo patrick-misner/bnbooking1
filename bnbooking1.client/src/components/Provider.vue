@@ -1,24 +1,26 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <img class="img-fluid provider-img" :src="provider.coverImg" alt="" />
+  <div @click="selectProvider()">
+    <div class="row">
+      <div class="col-12">
+        <img class="img-fluid provider-img" :src="provider.coverImg" alt="" />
+      </div>
     </div>
-  </div>
-  <div class="row p-1">
-    <div class="col-10 d-flex">
-      <img
-        class="img-fluid provider-picture"
-        :src="provider.creator.picture"
-        alt=""
-      />
-      <p class="p-1">{{ provider.creator.name }}</p>
+    <div class="row p-1">
+      <div class="col-10 d-flex">
+        <img
+          class="img-fluid provider-picture"
+          :src="provider.creator.picture"
+          alt=""
+        />
+        <p class="p-1">{{ provider.creator.name }}</p>
+      </div>
     </div>
-  </div>
-  <div class="row p-2">
-    <div class="col-12">
-      <p>{{ provider.description }}</p>
-      <div class="row">
-        <i class="mdi mdi-star fs-5">{{ Math.floor(provider.rating) }}</i>
+    <div class="row p-2">
+      <div class="col-12">
+        <p>{{ provider.description }}</p>
+        <div class="row">
+          <i class="mdi mdi-star fs-5">{{ Math.floor(provider.rating) }}</i>
+        </div>
       </div>
     </div>
   </div>
