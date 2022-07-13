@@ -1,49 +1,24 @@
 <template>
-  <div
-    class="post rounded elevation-2 text-light selectable grow"
-    @click="selectProvider"
-    :style="`background-image: url(${provider.coverImg})`"
-  >
-    <div class="text-uppercase ps-2 pt-2">{{ provider.name }}</div>
-    <div v-for="a in provider.availability" :key="a.id">
-      {{ a.day }} {{ a.open }} {{ a.close }}
+  <div class="row">
+    <div class="col-12">
+      <img class="img-fluid provider-img" :src="provider.coverImg" alt="" />
     </div>
-    <!-- NOTE logic for rating -->
-    <div class="d-flex justify-content-center align-items-end h-75">
-      <div v-if="provider.rating >= 4.5">
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle fs-2"></i>
-      </div>
-      <div v-if="(provider.rating >= 3.5) & (provider.rating < 4.5)">
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle grey fs-2"></i>
-      </div>
-      <div v-if="(provider.rating >= 2.5) & (provider.rating < 3.5)">
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle grey fs-2"></i>
-        <i class="mdi mdi-star-circle grey fs-2"></i>
-      </div>
-      <div v-if="(provider.rating >= 1.5) & (provider.rating < 2.5)">
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle grey fs-2"></i>
-        <i class="mdi mdi-star-circle grey fs-2"></i>
-        <i class="mdi mdi-star-circle grey fs-2"></i>
-      </div>
-      <div v-if="(provider.rating >= 0.5) & (provider.rating < 1.5)">
-        <i class="mdi mdi-star-circle fs-2"></i>
-        <i class="mdi mdi-star-circle grey fs-2"></i>
-        <i class="mdi mdi-star-circle grey fs-2"></i>
-        <i class="mdi mdi-star-circle grey fs-2"></i>
-        <i class="mdi mdi-star-circle grey fs-2"></i>
+  </div>
+  <div class="row p-1">
+    <div class="col-10 d-flex">
+      <img
+        class="img-fluid provider-picture"
+        :src="provider.creator.picture"
+        alt=""
+      />
+      <p class="p-1">{{ provider.creator.name }}</p>
+    </div>
+  </div>
+  <div class="row p-2">
+    <div class="col-12">
+      <p>{{ provider.description }}</p>
+      <div class="row">
+        <i class="mdi mdi-star fs-5">{{ Math.floor(provider.rating) }}</i>
       </div>
     </div>
   </div>
@@ -73,7 +48,7 @@ export default {
   background-repeat: no-repeat;
   height: 225px;
 }
-.mdi-star-circle {
+.mdi-star {
   color: yellow;
 }
 
@@ -82,11 +57,13 @@ export default {
   opacity: 30%;
 }
 
-.grow {
-  transition: all 0.2s ease-in-out;
+.provider-img {
+  height: 30vh;
+  width: 100vh;
 }
 
-.grow:hover {
-  transform: scale(1.01);
+.provider-picture {
+  height: 30px;
+  border-radius: 50%;
 }
 </style>

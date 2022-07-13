@@ -8,22 +8,28 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-
         <div class="bg-secondary text-center elevation-2 rounded py-3">
-          <h4>My Client Appointments</h4> 
+          <h4>My Client Appointments</h4>
         </div>
 
         <div class="col-12">
-        <ClientAppointment v-for="a in providerAppointments" :key="a.id" :appointment="a"/>
-       </div>
-
-        <div class="bg-secondary text-center elevation-2 rounded py-3">
-          <h4>My Appointments</h4>  
+          <ClientAppointment
+            v-for="a in providerAppointments"
+            :key="a.id"
+            :appointment="a"
+          />
         </div>
 
+        <div class="bg-secondary text-center elevation-2 rounded py-3">
+          <h4>My Appointments</h4>
+        </div>
       </div>
       <div class="col-12">
-        <Appointment v-for="a in userAppointments" :key="a.id" :appointment="a"/>
+        <Appointment
+          v-for="a in userAppointments"
+          :key="a.id"
+          :appointment="a"
+        />
       </div>
     </div>
   </div>
@@ -33,21 +39,19 @@
 import { computed, onMounted, watchEffect } from 'vue'
 import { AppState } from '../AppState'
 import { appointmentsService } from "../services/AppointmentsService"
-import AppointmentForm from "../components/AppointmentForm.vue"
 import { providersService } from "../services/ProvidersService"
 export default {
-    name: "Account",
-    setup() {
-        onMounted(async () => {
-            const userAppointments = await appointmentsService.getUserAppointments();
-        });
-        return {
-            account: computed(() => AppState.account),
-            userAppointments: computed(() => AppState.userAppointments),
-            providerAppointments: computed(() => AppState.providerAppointments)
-        };
-    },
-    components: { AppointmentForm }
+  name: "Account",
+  setup() {
+    onMounted(async () => {
+      const userAppointments = await appointmentsService.getUserAppointments();
+    });
+    return {
+      account: computed(() => AppState.account),
+      userAppointments: computed(() => AppState.userAppointments),
+      providerAppointments: computed(() => AppState.providerAppointments)
+    };
+  },
 }
 </script>
 

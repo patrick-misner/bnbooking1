@@ -4,11 +4,12 @@ import { api } from "./AxiosService"
 
 
 class AppointmentsService {
-  async getUserAppointments(){
+  async getUserAppointments() {
     const res = await api.get('/account/appointments')
+    logger.log('these are the appointments i have to go to', res.data)
     AppState.userAppointments = res.data
   }
-  async getProviderAppointments(){
+  async getProviderAppointments() {
     let appointments = []
     AppState.myProviders.forEach(p => {
       appointments.push(api.get('api/providers/' + p.id + '/appointments'))
@@ -28,7 +29,7 @@ class AppointmentsService {
     return res.data
   }
 
-  async deleteAppointment(appointmentId){
+  async deleteAppointment(appointmentId) {
     const res = await api.delete('api/appointments/' + appointmentId)
     AppState.userAppointments = AppState.userAppointments.filter(a => a.id != appointmentId)
     AppState.providerAppointments = AppState.providerAppointments.filter(a => a.id != appointmentId)

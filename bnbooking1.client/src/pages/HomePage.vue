@@ -16,7 +16,11 @@
   <body class="bg-primary">
     <div class="container-fluid">
       <div class="row justify-content-around">
-        <div v-for="p in providers" :key="p.id" class="col-md-3 p-0 m-2">
+        <div
+          v-for="p in providers"
+          :key="p.id"
+          class="col-md-3 p-0 m-2 elevation-3 grow bg-light"
+        >
           <Provider :provider="p" />
         </div>
       </div>
@@ -68,5 +72,13 @@ export default {
 }
 .footer {
   min-height: 10vh;
+}
+.grow {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.grow:hover {
+  transform: scale(1.01);
 }
 </style>
