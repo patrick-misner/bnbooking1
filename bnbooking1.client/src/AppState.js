@@ -7,7 +7,8 @@ export const AppState = reactive({
   providers: [],
   activeProvider: {},
   userAppointments: [],
-  providerAppointments: [],
+  myProviderAppointments: [],
+
   availableTimes: [],
   myProviders: [],
   reviews: [],
