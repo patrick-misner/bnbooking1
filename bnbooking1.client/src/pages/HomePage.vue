@@ -19,9 +19,6 @@
         <div v-for="p in providers" :key="p.id" class="col-md-3 p-0 m-2">
           <Provider :provider="p" />
         </div>
-        <div class="collapse" id="collapseExample">
-          <Search />
-        </div>
       </div>
     </div>
   </body>

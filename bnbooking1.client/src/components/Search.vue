@@ -1,17 +1,7 @@
 <template>
-  <div class="row ms-3 show">
-    <form @submit.prevent="searchProviders">
-      <input
-        v-model="search"
-        type="text"
-        class="col-11"
-        placeholder="Search Providers"
-      />
-      <button class="col-1 btn btn-primary">
-        <i class="mdi mdi-magnify"></i>
-      </button>
-    </form>
-  </div>
+  <form @submit.prevent="searchProviders" class="show">
+    <input v-model="search" type="text" placeholder="Search Providers" />
+  </form>
 </template>
 
 
@@ -45,5 +35,8 @@ export default {
 <style lang="scss" scoped>
 .show {
   transition: 50ms;
+}
+input {
+  width: 800px;
 }
 </style>

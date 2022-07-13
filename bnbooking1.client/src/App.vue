@@ -29,6 +29,9 @@
           data-bs-target="#collapseExample"
         ></i>
       </router-link>
+      <div class="collapse" id="collapseExample">
+        <Search />
+      </div>
 
       <router-link
         :to="{ name: 'Account' }"
