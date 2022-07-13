@@ -36,7 +36,8 @@
           data-bs-toggle="modal"
           data-bs-target="#create-appointment"
         >
-          <h5><i class="mdi mdi-plus-circle p-2"></i>Book</h5>
+          <h5 v-if="loaded"><i class="mdi mdi-plus-circle p-2"></i>Book</h5>
+          <h5 v-else><i class="mdi mdi-loading mdi-spin"></i></h5>
         </button>
       </div>
       <div class="col-4">
@@ -145,7 +146,7 @@
 </template>
 
 <script>
-import { computed, onMounted, onUnmounted, watchEffect } from "@vue/runtime-core"
+import { computed, onMounted, onUnmounted, ref, watchEffect } from "@vue/runtime-core"
 import { useRoute } from "vue-router"
 import Pop from "../utils/Pop"
 import { logger } from "../utils/Logger"
@@ -156,11 +157,15 @@ export default {
   setup() {
     // const averageRating = 
     const route = useRoute();
+    const loading = ref(true)
     watchEffect(async () => {
       try {
         if (route.name == "Provider") {
           await providersService.getProvider(route.params.id);
           await reviewsService.getProviderReviews(route.params.id);
+
+          // TODO await get provider appointments
+          loading.value = false
         }
       }
       catch (error) {

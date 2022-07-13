@@ -44,7 +44,14 @@
             aria-label="Default select example"
           >
             <option selected>Select a time</option>
-            <option :value="t" v-for="t in availableTimes" :key="t">{{ t > 12 ? t - 12 + ':00 PM' : t + ':00 AM'  }}</option>
+            <option
+              :value="t"
+              v-for="t in availableTimes"
+              :key="t"
+              :disabled="preBooked(t)"
+            >
+              {{ t > 12 ? t - 12 + ":00 PM" : t + ":00 AM" }}
+            </option>
           </select>
         </div>
       </div>
@@ -74,6 +81,7 @@ export default {
   props: { provider: { type: Object, required: true } },
   setup(props) {
     const date = ref();
+    const dailyAppointments = ref([])
     const editable = ref({
       date: date,
       providerId: '',
@@ -111,6 +119,8 @@ export default {
       // availableTimes,
       provider: computed(() => AppState.activeProvider),
       availableTimes: computed(() => AppState.availableTimes),
+      myProviderAppointments: computed(() => AppState.myProviderAppointments),
+      userAppointments: computed(() => AppState.userAppointments),
       async createAppointment() {
         try {
           logger.log('appoint form attempt')
@@ -123,12 +133,28 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
+      // disableTime(range, date) {
+      //   First find the day that is chosen
+      //   check if there are any appointments for the specified day.
+      //   if there is then disable that startTime in the range. 
+      //   const found = providerAppointments.find(a => date = a.date)
+      //   logger.log('stuff', found)
+      // },
       getAvailableTimes(date) {
         let day = date.getDay()
         let open = this.provider.availability[day].open
         let close = this.provider.availability[day].close
         const range = [...Array(close - open + 1).keys()].map(x => x + open);
+        // disableTime(range, date)
         AppState.availableTimes = range
+
+        const found = this.providerAppointments.filter(a => date.toLocaleDateString() == new Date(a.date).toLocaleDateString()).map(a => a.startTime)
+        logger.log('found date', found)
+        dailyAppointments.value = found
+      },
+      preBooked(t) {
+        // double check this for data type
+        return dailyAppointments.value.includes(t)
       }
     };
   }

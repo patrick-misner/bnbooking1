@@ -6,10 +6,10 @@ import { api } from "./AxiosService"
 class AppointmentsService {
   async getUserAppointments() {
     const res = await api.get('/account/appointments')
-    logger.log('these are the appointments i have to go to', res.data)
     AppState.userAppointments = res.data
   }
-  async getProviderAppointments() {
+  // FIXME this needs to be a get my
+  async getMyProviderAppointments() {
     let appointments = []
     AppState.myProviders.forEach(p => {
       appointments.push(api.get('api/providers/' + p.id + '/appointments'))
@@ -19,9 +19,15 @@ class AppointmentsService {
     res.forEach(r => {
       allAppointments.push(...r.data)
     })
-    AppState.providerAppointments = allAppointments
-    logger.log('allappointments', AppState.providerAppointments)
+    // FIXME this needs to be 'my provider appointments'
+    AppState.myProviderAppointments = allAppointments
+    logger.log('allappointments', AppState.myProviderAppointments)
   }
+
+
+  // TODO get appointments by provider id
+
+
   async createAppointment(body) {
     body.providerId = AppState.activeProvider.id
     logger.log('create appointment service', body)
