@@ -8,6 +8,7 @@
         <div class="d-flex justify-content-center">
           <Datepicker
             v-model="date"
+            ref="datepicker"
             @update:modelValue="getAvailableTimes(date)"
             inline
             autoApply
@@ -24,20 +25,8 @@
         </div>
       </div>
 
-      <!-- <div class="col-12 mb-3 text-center">
-              Monday:
-        <div class="d-flex justify-content-center align-items-center">
-          <Datepicker v-model="time" range minutesIncrement="60" timePicker noMinutesOverlay :startTime="startTime" :is24="false"/>
-        </div>
-      </div> -->
-
       <div class="col-md-12 d-flex justify-content-center">
         <div class="mx-5 mb-3">
-          <!-- {{ provider.availability }} -->
-          <!-- generate array with these values, filter out already booked v-for -->
-          <!-- populate array (what is the open time and what is the end time)
-              a second loop and filter out appointments -->
-
           <select
             v-model="editable.startTime"
             class="form-select"
@@ -81,8 +70,14 @@ export default {
   props: { provider: { type: Object, required: true } },
   setup(props) {
     const date = ref();
+    const datepicker = ref(null);
+    const clearDate = () => {
+      if (datepicker) {
+        datepicker.value.clearValue()
+      }
+    };
     const dailyAppointments = ref([])
-    const editable = ref({
+    let editable = ref({
       date: date,
       providerId: '',
       startTime: 'Select a time'
@@ -126,6 +121,11 @@ export default {
           logger.log('appoint form attempt')
           const appointment = await appointmentsService.createAppointment(editable.value)
           Modal.getOrCreateInstance(document.getElementById("create-appointment")).hide()
+          editable = {
+            date: date,
+            providerId: '',
+            startTime: 'Select a time'
+          }
           Pop.toast('Appointment Created!', 'success')
           return appointment
         } catch (error) {
