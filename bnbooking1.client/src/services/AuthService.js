@@ -22,7 +22,7 @@ export const AuthService = initialize({
   }
 })
 
-AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
+AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
   api.defaults.headers.authorization = AuthService.bearer
   api.interceptors.request.use(refreshAuthToken)
   AppState.user = AuthService.user
@@ -32,7 +32,7 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   // TODO Get my providers (/account/providers/)
   await providersService.getMyProviders(AppState.account.id)
   // get my provider appointments 
-  await appointmentsService.getProviderAppointments()
+  await appointmentsService.getMyProviderAppointments()
 })
 
 async function refreshAuthToken(config) {

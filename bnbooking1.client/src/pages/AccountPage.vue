@@ -14,7 +14,7 @@
 
         <div class="col-12">
           <ClientAppointment
-            v-for="a in providerAppointments"
+            v-for="a in myProviderAppointments"
             :key="a.id"
             :appointment="a"
           />
@@ -49,7 +49,7 @@ export default {
     return {
       account: computed(() => AppState.account),
       userAppointments: computed(() => AppState.userAppointments),
-      providerAppointments: computed(() => AppState.providerAppointments)
+      myProviderAppointments: computed(() => AppState.myProviderAppointments)
     };
   },
 }
