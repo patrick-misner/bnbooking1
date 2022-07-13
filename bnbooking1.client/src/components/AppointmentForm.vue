@@ -44,13 +44,7 @@
             aria-label="Default select example"
           >
             <option selected>Select a time</option>
-<<<<<<< HEAD
             <option :value="t" v-for="t in availableTimes" :key="t">{{ t > 12 ? t - 12 + ':00 PM' : t + ':00 AM'  }}</option>
-=======
-            <option :value="t" v-for="t in availableTimes" :key="t">
-              {{ t }}:00
-            </option>
->>>>>>> 87989024a3520d59d3380852b802a278b3aef623
           </select>
         </div>
       </div>
@@ -131,26 +125,9 @@ export default {
       },
       getAvailableTimes(date) {
         let day = date.getDay()
-<<<<<<< HEAD
         let open = this.provider.availability[day].open
         let close = this.provider.availability[day].close
         const range = [...Array(close - open + 1).keys()].map(x => x + open);
-=======
-        // logger.log('getAvailable times ran', day)
-        let open = this.provider.availability[day].open
-        let close = this.provider.availability[day].close
-        const range = [...Array(close - open + 1).keys()].map(x => x + open);
-        for (let i = 0; i < range.length; i++) {
-          let time = range[i];
-          if (parseInt(time) > 12) {
-            let newTime = parseInt(time)
-            newTime = newTime - 12
-            logger.log('time loop', newTime)
-            time = newTime
-          }
-        }
-        logger.log('available times', range)
->>>>>>> 87989024a3520d59d3380852b802a278b3aef623
         AppState.availableTimes = range
       }
     };
