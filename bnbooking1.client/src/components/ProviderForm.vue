@@ -92,7 +92,7 @@
     <label>Bio</label>
     <input
       v-model="editable.bio"
-      type="number"
+      type="text"
       aria-describedby="helpId"
       required
     />
@@ -110,10 +110,9 @@
 import { ref } from "@vue/reactivity"
 import Pop from "../utils/Pop"
 import { Modal } from "bootstrap"
-import { watch, watchEffect } from '@vue/runtime-core'
+import { watchEffect } from '@vue/runtime-core'
 import { useRouter } from 'vue-router'
 import { providersService } from '../services/ProvidersService'
-import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 export default {
   props: { provider: { type: Object, required: false } },
@@ -134,7 +133,6 @@ export default {
     watchEffect(() => {
       // TODO figure out best method for editing provider..
       // editable.value = { ...props.provider }
-
     })
     return {
       weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -142,7 +140,7 @@ export default {
       editable,
       async createProvider() {
         try {
-          // TODO turn times into correct values based on am/pm
+          // NOTE turn times into correct values based on am/pm
           let week = editable.value.availability
           week.forEach(d => {
             d.open = d.oam == 'am' ? d.open : parseInt(d.open) + 12

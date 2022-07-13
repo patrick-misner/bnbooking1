@@ -44,7 +44,9 @@
             aria-label="Default select example"
           >
             <option selected>Select a time</option>
-            <option :value="t" v-for="t in availableTimes" :key="t">{{ t }}:00</option>
+            <option :value="t" v-for="t in availableTimes" :key="t">
+              {{ t }}:00
+            </option>
           </select>
         </div>
       </div>
@@ -68,7 +70,6 @@ import { logger } from "../utils/Logger";
 import { appointmentsService } from '../services/AppointmentsService'
 import Pop from "../utils/Pop";
 import { Modal } from "bootstrap";
-import { onMounted, watchEffect } from "@vue/runtime-core";
 
 export default {
   components: { DatePicker },
@@ -126,13 +127,13 @@ export default {
       },
       getAvailableTimes(date) {
         let day = date.getDay()
-      // logger.log('getAvailable times ran', day)
+        // logger.log('getAvailable times ran', day)
         let open = this.provider.availability[day].open
         let close = this.provider.availability[day].close
         const range = [...Array(close - open + 1).keys()].map(x => x + open);
         for (let i = 0; i < range.length; i++) {
           let time = range[i];
-          if(parseInt(time) > 12){
+          if (parseInt(time) > 12) {
             let newTime = parseInt(time)
             newTime = newTime - 12
             logger.log('time loop', newTime)
@@ -141,7 +142,7 @@ export default {
         }
         logger.log('available times', range)
         AppState.availableTimes = range
-    }
+      }
     };
   }
 
