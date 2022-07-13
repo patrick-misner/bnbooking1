@@ -116,11 +116,11 @@ export default {
       editable,
       closedDays,
       time,
-      // availableTimes,
       provider: computed(() => AppState.activeProvider),
       availableTimes: computed(() => AppState.availableTimes),
       myProviderAppointments: computed(() => AppState.myProviderAppointments),
       userAppointments: computed(() => AppState.userAppointments),
+      providerAppointments: computed(() => AppState.providerAppointments),
       async createAppointment() {
         try {
           logger.log('appoint form attempt')
@@ -133,19 +133,11 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-      // disableTime(range, date) {
-      //   First find the day that is chosen
-      //   check if there are any appointments for the specified day.
-      //   if there is then disable that startTime in the range. 
-      //   const found = providerAppointments.find(a => date = a.date)
-      //   logger.log('stuff', found)
-      // },
       getAvailableTimes(date) {
         let day = date.getDay()
         let open = this.provider.availability[day].open
         let close = this.provider.availability[day].close
         const range = [...Array(close - open + 1).keys()].map(x => x + open);
-        // disableTime(range, date)
         AppState.availableTimes = range
 
         const found = this.providerAppointments.filter(a => date.toLocaleDateString() == new Date(a.date).toLocaleDateString()).map(a => a.startTime)

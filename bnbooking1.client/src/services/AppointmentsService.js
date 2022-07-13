@@ -19,19 +19,24 @@ class AppointmentsService {
     res.forEach(r => {
       allAppointments.push(...r.data)
     })
-    // FIXME this needs to be 'my provider appointments'
     AppState.myProviderAppointments = allAppointments
-    logger.log('allappointments', AppState.myProviderAppointments)
   }
 
 
   // TODO get appointments by provider id
+  async getProviderAppointments(providerId) {
+    const res = await api.get('api/providers/' + providerId + '/appointments')
+    logger.log('get provider appointments', res.data)
+    AppState.providerAppointments = res.data
+  }
 
 
   async createAppointment(body) {
     body.providerId = AppState.activeProvider.id
     logger.log('create appointment service', body)
     const res = await api.post('api/appointments', body)
+    AppState.providerAppointments.push(body)
+
     return res.data
   }
 
