@@ -96,15 +96,7 @@
   <div class="d-flex justify-content-center">
     <div
       class="col-md-8 map m-3 text-success"
-      style="
-        background-image: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0.9),
-            rgba(0, 0, 0, 0.5)
-          ),
-          url('https://images.unsplash.com/photo-1562504208-03d85cc8c23e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
-      "
-    >
+      style="background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2050&q=80');">
       <div v-for="a in provider.availability" :key="a.id">
         <div v-if="a.day == 0">Sunday {{ a.open }} - {{ a.close }}</div>
         <div v-if="a.day == 1">Monday {{ a.open }} - {{ a.close }}</div>
