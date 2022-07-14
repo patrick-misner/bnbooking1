@@ -110,6 +110,10 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Butterfly+Kids&family=Cedarville+Cursive&family=Kanit:ital@1&display=swap");
+* {
+  font-family: "Kanit", sans-serif;
+}
 .header-bg {
   background-image: url("https://images.unsplash.com/photo-1539667468225-eebb663053e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1717&q=80");
   background-repeat: no-repeat;

@@ -15,11 +15,16 @@
       required
     />
     <label for="providers">Tags:</label>
-    <select v-model="editable.tags" name="providers" id="providers">
-      <option value="convention">Convention</option>
-      <option value="sport">Sport</option>
-      <option value="digital">Digital</option>
-      <option value="concert">Concert</option></select
+    <select
+      class="ms-3"
+      v-model="editable.tags"
+      name="providers"
+      id="providers"
+    >
+      <option value="unknown">unknown</option>
+      <option value="unknown">unknown</option>
+      <option value="unknown">unknown</option>
+      <option value="unknown">unknown</option></select
     ><br />
 
     <label>Location</label>
@@ -32,8 +37,12 @@
     <!-- NOTE Start of availability -->
     <div>
       <label>Availability</label><br />
-      <div v-for="(day, i) in weekDays" :key="day" class="border border-bottom">
-        <label>{{ day }}</label>
+      <div
+        v-for="(day, i) in weekDays"
+        :key="day"
+        class="border border-bottom mb-3"
+      >
+        <label class="ms-3">{{ day }}</label>
         <select
           name="providers"
           id="providers"
@@ -98,9 +107,9 @@
     />
     <label>Description of Services Provided</label>
     <textarea v-model="editable.description" required />
-    <button type="button" data-bs-dismiss="modal">cancel</button>
-    <button v-if="!provider" type="button" @click="createProvider">
-      Create!
+    <button class="ms-3" type="button" data-bs-dismiss="modal">Cancel</button>
+    <button class="ms-3" v-if="!provider" type="button" @click="createProvider">
+      Create
     </button>
     <button v-else type="button" @click="editProviderDetails">Save!</button>
   </form>

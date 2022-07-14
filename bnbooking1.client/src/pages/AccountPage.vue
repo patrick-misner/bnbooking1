@@ -62,21 +62,24 @@
       </div>
     </div>
   </div>
-
-  <!-- -->
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
+import { appointmentsService } from '../services/AppointmentsService';
+import { logger } from '../utils/Logger';
 export default {
   name: "Account",
   setup() {
-    // onMounted(async () => {
-    //   const userAppointments = await appointmentsService.getUserAppointments();
-    // });
+    onMounted(async () => {
+      await appointmentsService.getUserAppointments();
+      await appointmentsService.getMyProviderAppointments()
+      logger.log(AppState.providers)
+    });
     return {
       account: computed(() => AppState.account),
+      provider: computed(() => AppState.provider),
       userAppointments: computed(() => AppState.userAppointments),
       myProviderAppointments: computed(() => AppState.myProviderAppointments),
     };

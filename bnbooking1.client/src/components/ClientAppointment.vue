@@ -27,7 +27,6 @@
 
 
 <script>
-import { id } from "date-fns/locale"
 import { appointmentsService } from "../services/AppointmentsService"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
