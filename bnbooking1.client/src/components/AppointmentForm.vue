@@ -3,7 +3,7 @@
     <div class="col-12 text-center py-3">
       <h5>Select Date & Time</h5>
     </div>
-    <form @submit.prevent="createAppointment">
+    <form @submit.prevent="createAppointment" ref="form-test">
       <div class="col-12 mb-3">
         <div class="d-flex justify-content-center">
           <Datepicker
@@ -21,7 +21,7 @@
             :startTime="startTime"
             format="dd-MM-yyyy"
             :enableTimePicker="false"
-          ></Datepicker>
+          />
         </div>
       </div>
 
@@ -39,7 +39,7 @@
               :key="t"
               :disabled="preBooked(t)"
             >
-              {{ t > 12 ? t - 12 + ":00 PM" : t + ":00 AM" }}
+              {{ formatTime(t) }}
             </option>
           </select>
         </div>
@@ -121,11 +121,12 @@ export default {
           logger.log('appoint form attempt')
           const appointment = await appointmentsService.createAppointment(editable.value)
           Modal.getOrCreateInstance(document.getElementById("create-appointment")).hide()
-          editable = {
+          editable.value = {
             date: date,
             providerId: '',
             startTime: 'Select a time'
           }
+          this.getAvailableTimes(date.value)
           Pop.toast('Appointment Created!', 'success')
           return appointment
         } catch (error) {
@@ -147,6 +148,18 @@ export default {
       preBooked(t) {
         // double check this for data type
         return dailyAppointments.value.includes(t)
+      },
+      formatTime(t) {
+        if (t < 12){
+          t = t + ':00 AM'
+        }
+        if (t == 12){
+          t = t + ':00 PM'
+        }
+        if (t > 12){
+          t = t - 12 + ':00 PM'
+        }
+        return t
       }
     };
   }
