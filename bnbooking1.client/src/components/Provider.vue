@@ -19,7 +19,7 @@
       <div class="col-12">
         <p>{{ provider.description }}</p>
         <div class="row">
-          <i class="mdi mdi-star fs-5">{{ Math.floor(provider.rating) }}</i>
+          <i class="mdi mdi-star fs-5">{{ averageRating }}</i>
         </div>
       </div>
     </div>
@@ -30,11 +30,30 @@
 import { computed } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
+import { onMounted, watchEffect } from '@vue/runtime-core'
+import Pop from '../utils/Pop'
+import { reviewsService } from '../services/ReviewsService'
 export default {
   props: { provider: { type: Object, required: true } },
   setup(props) {
+    // watchEffect(async () => {
+    //   try {
+    //     await reviewsService.getProviderReviews(props.provider.id)
+    //   } catch (error) {
+    //     Pop.error(error)
+    //   }
+    // })
     const router = useRouter()
     return {
+      // averageRating: computed(() => {
+      //   let total = 0
+      //   for (let i = 0; i < AppState.reviews.length; i++) {
+      //     let review = AppState.reviews[i]
+      //     total += review.rating
+      //   }
+      //   return total / AppState.reviews.length
+      // }),
+
       account: computed(() => AppState.account),
       selectProvider() {
         router.push({ name: 'Provider', params: { id: props.provider.id } })

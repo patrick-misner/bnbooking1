@@ -41,35 +41,35 @@
         </button>
       </div>
       <div class="col-4">
-        <div v-if="provider.rating >= 4.5">
+        <div v-if="averageRating >= 4.5">
           <i class="mdi mdi-star-circle fs-3"></i>
           <i class="mdi mdi-star-circle fs-3"></i>
           <i class="mdi mdi-star-circle fs-3"></i>
           <i class="mdi mdi-star-circle fs-3"></i>
           <i class="mdi mdi-star-circle fs-3"></i>
         </div>
-        <div v-if="(provider.rating >= 3.5) & (provider.rating < 4.5)">
+        <div v-if="(averageRating >= 3.5) & (averageRating < 4.5)">
           <i class="mdi mdi-star-circle fs-2"></i>
           <i class="mdi mdi-star-circle fs-2"></i>
           <i class="mdi mdi-star-circle fs-2"></i>
           <i class="mdi mdi-star-circle fs-2"></i>
           <i class="mdi mdi-star-circle grey fs-2"></i>
         </div>
-        <div v-if="(provider.rating >= 2.5) & (provider.rating < 3.5)">
+        <div v-if="(averageRating >= 2.5) & (averageRating < 3.5)">
           <i class="mdi mdi-star-circle fs-2"></i>
           <i class="mdi mdi-star-circle fs-2"></i>
           <i class="mdi mdi-star-circle fs-2"></i>
           <i class="mdi mdi-star-circle grey fs-2"></i>
           <i class="mdi mdi-star-circle grey fs-2"></i>
         </div>
-        <div v-if="(provider.rating >= 1.5) & (provider.rating < 2.5)">
+        <div v-if="(averageRating >= 1.5) & (averageRating < 2.5)">
           <i class="mdi mdi-star-circle fs-2"></i>
           <i class="mdi mdi-star-circle fs-2"></i>
           <i class="mdi mdi-star-circle grey fs-2"></i>
           <i class="mdi mdi-star-circle grey fs-2"></i>
           <i class="mdi mdi-star-circle grey fs-2"></i>
         </div>
-        <div v-if="(provider.rating >= 0.5) & (provider.rating < 1.5)">
+        <div v-if="(averageRating >= 0.5) & (averageRating < 1.5)">
           <i class="mdi mdi-star-circle fs-2"></i>
           <i class="mdi mdi-star-circle grey fs-2"></i>
           <i class="mdi mdi-star-circle grey fs-2"></i>
@@ -181,6 +181,14 @@ export default {
       provider: computed(() => AppState.activeProvider),
       isProvider: computed(() => AppState.account.id === AppState.activeProvider.creatorId),
       reviews: computed(() => AppState.reviews),
+      averageRating: computed(() => {
+        let total = 0
+        for (let i = 0; i < AppState.reviews.length; i++) {
+          let review = AppState.reviews[i]
+          total += review.rating
+        }
+        return total / AppState.reviews.length
+      }),
     };
   },
 }
@@ -209,5 +217,9 @@ i {
   height: 350px;
   background-position: center;
   backdrop-filter: blur(2px);
+}
+
+.mdi-star-circle {
+  color: yellow;
 }
 </style>
