@@ -102,7 +102,7 @@
             rgba(0, 0, 0, 0.9),
             rgba(0, 0, 0, 0.5)
           ),
-          url('https://c1.10times.com/map/city/91848.png');
+          url('https://images.unsplash.com/photo-1562504208-03d85cc8c23e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
       "
     >
       <div v-for="a in provider.availability" :key="a.id">
