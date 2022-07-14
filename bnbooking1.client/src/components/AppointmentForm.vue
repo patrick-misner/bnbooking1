@@ -3,11 +3,12 @@
     <div class="col-12 text-center py-3">
       <h5>Select Date & Time</h5>
     </div>
-    <form @submit.prevent="createAppointment">
+    <form @submit.prevent="createAppointment" ref="form-test">
       <div class="col-12 mb-3">
         <div class="d-flex justify-content-center">
           <Datepicker
             v-model="date"
+            ref="datepicker"
             @update:modelValue="getAvailableTimes(date)"
             inline
             autoApply
@@ -20,24 +21,12 @@
             :startTime="startTime"
             format="dd-MM-yyyy"
             :enableTimePicker="false"
-          ></Datepicker>
+          />
         </div>
       </div>
 
-      <!-- <div class="col-12 mb-3 text-center">
-              Monday:
-        <div class="d-flex justify-content-center align-items-center">
-          <Datepicker v-model="time" range minutesIncrement="60" timePicker noMinutesOverlay :startTime="startTime" :is24="false"/>
-        </div>
-      </div> -->
-
       <div class="col-md-12 d-flex justify-content-center">
         <div class="mx-5 mb-3">
-          <!-- {{ provider.availability }} -->
-          <!-- generate array with these values, filter out already booked v-for -->
-          <!-- populate array (what is the open time and what is the end time)
-              a second loop and filter out appointments -->
-
           <select
             v-model="editable.startTime"
             class="form-select"
@@ -50,7 +39,7 @@
               :key="t"
               :disabled="preBooked(t)"
             >
-              {{ t > 12 ? t - 12 + ":00 PM" : t + ":00 AM" }}
+              {{ formatTime(t) }}
             </option>
           </select>
         </div>
@@ -81,8 +70,14 @@ export default {
   props: { provider: { type: Object, required: true } },
   setup(props) {
     const date = ref();
+    const datepicker = ref(null);
+    const clearDate = () => {
+      if (datepicker) {
+        datepicker.value.clearValue()
+      }
+    };
     const dailyAppointments = ref([])
-    const editable = ref({
+    let editable = ref({
       date: date,
       providerId: '',
       startTime: 'Select a time'
@@ -116,16 +111,22 @@ export default {
       editable,
       closedDays,
       time,
-      // availableTimes,
       provider: computed(() => AppState.activeProvider),
       availableTimes: computed(() => AppState.availableTimes),
       myProviderAppointments: computed(() => AppState.myProviderAppointments),
       userAppointments: computed(() => AppState.userAppointments),
+      providerAppointments: computed(() => AppState.providerAppointments),
       async createAppointment() {
         try {
           logger.log('appoint form attempt')
           const appointment = await appointmentsService.createAppointment(editable.value)
           Modal.getOrCreateInstance(document.getElementById("create-appointment")).hide()
+          editable.value = {
+            date: date,
+            providerId: '',
+            startTime: 'Select a time'
+          }
+          this.getAvailableTimes(date.value)
           Pop.toast('Appointment Created!', 'success')
           return appointment
         } catch (error) {
@@ -133,19 +134,11 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-      // disableTime(range, date) {
-      //   First find the day that is chosen
-      //   check if there are any appointments for the specified day.
-      //   if there is then disable that startTime in the range. 
-      //   const found = providerAppointments.find(a => date = a.date)
-      //   logger.log('stuff', found)
-      // },
       getAvailableTimes(date) {
         let day = date.getDay()
         let open = this.provider.availability[day].open
         let close = this.provider.availability[day].close
         const range = [...Array(close - open + 1).keys()].map(x => x + open);
-        // disableTime(range, date)
         AppState.availableTimes = range
 
         const found = this.providerAppointments.filter(a => date.toLocaleDateString() == new Date(a.date).toLocaleDateString()).map(a => a.startTime)
@@ -155,6 +148,18 @@ export default {
       preBooked(t) {
         // double check this for data type
         return dailyAppointments.value.includes(t)
+      },
+      formatTime(t) {
+        if (t < 12){
+          t = t + ':00 AM'
+        }
+        if (t == 12){
+          t = t + ':00 PM'
+        }
+        if (t > 12){
+          t = t - 12 + ':00 PM'
+        }
+        return t
       }
     };
   }

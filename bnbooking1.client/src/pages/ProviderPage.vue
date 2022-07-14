@@ -153,17 +153,21 @@ import { logger } from "../utils/Logger"
 import { providersService } from "../services/ProvidersService"
 import { reviewsService } from "../services/ReviewsService"
 import { AppState } from "../AppState"
+import { appointmentsService } from '../services/AppointmentsService'
 export default {
   setup() {
     // const averageRating = 
     const route = useRoute();
-    const loading = ref(true)
+    const loading = ref(true);
+    onMounted(async () => {
+
+    })
     watchEffect(async () => {
       try {
         if (route.name == "Provider") {
           await providersService.getProvider(route.params.id);
           await reviewsService.getProviderReviews(route.params.id);
-
+          await appointmentsService.getProviderAppointments(route.params.id);
           // TODO await get provider appointments
           loading.value = false
         }
@@ -189,6 +193,7 @@ export default {
         }
         return total / AppState.reviews.length
       }),
+      providerAppointments: computed(() => AppState.providerAppointments)
     };
   },
 }

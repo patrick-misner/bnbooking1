@@ -11,9 +11,8 @@ export class ProvidersController extends BaseController {
       .get('', this.getAll)
       .get('/:id', this.getById)
       .get('/:id/reviews', this.getProviderReviews)
-      // .get('/:id/reviews', this.getProviderReviews)
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:id/appointments', this.getProviderAppointments)
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -49,7 +48,6 @@ export class ProvidersController extends BaseController {
 
   async getProviderAppointments(req, res, next) {
     try {
-      req.body.creatorId = req.userInfo.id
       const appointments = await appointmentsService.getProviderAppointments({ providerId: req.params.id })
       return res.send(appointments)
 
