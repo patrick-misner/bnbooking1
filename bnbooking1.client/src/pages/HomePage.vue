@@ -14,17 +14,17 @@
     </div>
   </header>
   <body class="bg-primary">
-    <div class="container-fluid">
-      <div class="row justify-content-around">
-        <div
-          v-for="p in providers"
-          :key="p.id"
-          class="col-md-3 p-0 m-2 elevation-3 grow bg-light"
-        >
-          <Provider :provider="p" />
-        </div>
+    <!-- <div class="container-fluid"> -->
+    <div class="row justify-content-around">
+      <div
+        v-for="p in providers"
+        :key="p.id"
+        class="col-md-3 p-0 m-2 elevation-3 grow bg-light"
+      >
+        <Provider :provider="p" />
       </div>
     </div>
+    <!-- </div> -->
   </body>
   <Modal id="create-provider">
     <template #header>Become a Provider</template>

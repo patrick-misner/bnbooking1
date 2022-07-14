@@ -1,15 +1,61 @@
 <template>
-  <main class="bg-primary">
-    <router-view />
+  <main class="bg-primary container-fluid">
+    <div class="row">
+      <div class="col-md-12 pb-5 router-view">
+        <router-view />
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <div
+          class="
+            bg-secondary
+            d-flex
+            justify-content-around
+            align-items-center
+            fixed-bottom
+          "
+        >
+          <router-link
+            :to="{ name: 'Home' }"
+            class="btn text-primary text-uppercase"
+          >
+            <i class="mdi mdi-home fs-1 text-primary selectable"></i>
+          </router-link>
+
+          <router-link
+            :to="{ name: 'Home' }"
+            class="btn text-primary text-uppercase"
+          >
+            <i
+              class="mdi mdi-magnify fs-1 text-primary selectable"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample"
+            ></i>
+          </router-link>
+          <div class="collapse" id="collapseExample">
+            <Search />
+          </div>
+
+          <router-link
+            :to="{ name: 'Account' }"
+            class="btn text-primary text-uppercase"
+          >
+            <i class="mdi mdi-cog fs-1 text-primary selectable"></i>
+          </router-link>
+        </div>
+      </div>
+    </div>
   </main>
-  <footer>
-    <div
+  <!-- <footer class="container-fluid margin-end"> -->
+
+  <!-- <div
       class="
         bg-secondary
-        footer
         d-flex
         justify-content-around
         align-items-center
+        fixed-bottom
       "
     >
       <router-link
@@ -39,8 +85,8 @@
       >
         <i class="mdi mdi-cog fs-1 text-primary selectable"></i>
       </router-link>
-    </div>
-  </footer>
+    </div> -->
+  <!-- </footer> -->
 </template>
 
 <script>
@@ -70,7 +116,7 @@ export default {
   background-position: center;
   min-height: 15vh;
 }
-.footer {
-  min-height: 10vh;
+.router-view {
+  min-height: 100vh;
 }
 </style>

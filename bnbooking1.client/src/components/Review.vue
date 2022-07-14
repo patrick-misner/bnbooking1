@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-6">
       <div class="elevation-2 bg-grey m-3 rounded">
-        <div class="d-flex flex-row align-items-center">
+        <div class="d-flex align-items-center">
           <img
             :title="review.creator.name"
             :src="review.creator.picture"
