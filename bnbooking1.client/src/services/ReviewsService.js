@@ -2,9 +2,10 @@ import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
-class ReviewsService{
-  async getProviderReviews(providerId){
+class ReviewsService {
+  async getProviderReviews(providerId) {
     const res = await api.get('api/providers/' + providerId + '/reviews')
+    logger.log("getting reviews", res.data)
     AppState.reviews = res.data
   }
   async createReview(body) {
@@ -14,11 +15,11 @@ class ReviewsService{
     logger.log('created review', res.data)
     AppState.reviews.unshift(res.data)
     return res.data
-}
-async deleteReview(reviewId){
-  const res = await api.delete('api/reviews/' + reviewId)
-  AppState.reviews = AppState.reviews.filter(r => r.id != reviewId)
-}
+  }
+  async deleteReview(reviewId) {
+    const res = await api.delete('api/reviews/' + reviewId)
+    AppState.reviews = AppState.reviews.filter(r => r.id != reviewId)
+  }
 }
 
 export const reviewsService = new ReviewsService()
