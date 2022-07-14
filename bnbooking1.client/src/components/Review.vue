@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-6">
+    <div class="col-md-6">
       <div class="elevation-2 bg-grey m-3 rounded">
         <div class="d-flex align-items-center">
           <img
