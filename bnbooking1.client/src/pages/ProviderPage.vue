@@ -36,7 +36,7 @@
           data-bs-toggle="modal"
           data-bs-target="#create-appointment"
         >
-          <h5 v-if="loaded"><i class="mdi mdi-plus-circle p-2"></i>Book</h5>
+          <h5 v-if="!loading"><i class="mdi mdi-plus-circle p-2"></i>Book</h5>
           <h5 v-else><i class="mdi mdi-loading mdi-spin"></i></h5>
         </button>
       </div>
@@ -185,7 +185,8 @@ export default {
       provider: computed(() => AppState.activeProvider),
       isProvider: computed(() => AppState.account.id === AppState.activeProvider.creatorId),
       reviews: computed(() => AppState.reviews),
-      providerAppointments: computed(() => AppState.providerAppointments)
+      providerAppointments: computed(() => AppState.providerAppointments),
+      loading,
     };
   },
 }
