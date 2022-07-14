@@ -39,7 +39,6 @@ import { computed, onMounted } from '@vue/runtime-core'
 import Pop from '../utils/Pop'
 import { AppState } from '../AppState'
 import { providersService } from '../services/ProvidersService'
-import { reviewsService } from '../services/ReviewsService'
 export default {
   name: 'Home',
   setup() {

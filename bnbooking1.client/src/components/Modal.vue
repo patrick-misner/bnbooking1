@@ -8,7 +8,7 @@
   >
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header fs-3">
           <slot class="modal-title" name="header"></slot>
           <button
             type="button"
