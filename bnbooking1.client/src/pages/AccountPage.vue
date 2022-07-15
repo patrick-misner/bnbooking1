@@ -7,7 +7,7 @@
             <h1>Welcome</h1>
             <img class="account-picture" :src="account.picture" alt="" />
             <p>{{ account.name }}</p>
-            <i class="mdi mdi-pen"></i>
+            <i class="mdi mdi-pen selectable" data-bs-toggle="modal" data-bs-target="#Account-form"></i>
           </div>
         </div>
       </div>
@@ -87,6 +87,12 @@
       </div>
     </div>
   </div>
+  <Modal id="Account-form">
+    <template #header>Edit Account</template>
+    <template #body>
+     <AccountForm />
+    </template>
+  </Modal>
 </template>
 
 <script>
@@ -96,6 +102,7 @@ import { appointmentsService } from '../services/AppointmentsService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import { providersService } from '../services/ProvidersService';
+import { accountService } from '../services/AccountService';
 export default {
   name: "Account",
   setup() {
