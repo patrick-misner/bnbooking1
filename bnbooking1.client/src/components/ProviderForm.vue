@@ -147,20 +147,22 @@ export default {
     const router = useRouter()
     onMounted(() => {
       // TODO figure out best method for editing provider..
-      // if (AppState.formProvider.id) {
-      //   editable.value = formatForm()
-      // }
+      if (AppState.formProvider.id) {
+        editable.value = formatForm()
+      }
+
 
     });
     function formatForm() {
-      let provider = AppState.formProvider
-      let week = provider.availability
+      // NOTE this breaks reference of the object "availability" since that object is nested differently than normal
+      let providerTest = JSON.parse(JSON.stringify(AppState.formProvider))
+      let week = providerTest.availability
       week.forEach(d => {
         d.open = d.oam == 'am' ? d.open : d.open - 12
         d.close = d.cam == 'am' ? d.close : d.close - 12
       })
-      provider.availability = week
-      return provider
+      providerTest.availability = week
+      return providerTest
     }
     return {
       weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
