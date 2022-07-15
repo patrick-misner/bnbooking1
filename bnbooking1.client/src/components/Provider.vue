@@ -9,10 +9,10 @@
       <div class="col-10 d-flex">
         <img
           class="img-fluid provider-picture"
-          :src="provider.creator.picture"
+          :src="provider.creator?.picture"
           alt=""
         />
-        <p class="p-1">{{ provider.creator.name }}</p>
+        <p class="p-1">{{ provider.creator?.name }}</p>
       </div>
     </div>
     <div class="row p-2">
@@ -30,15 +30,18 @@
 import { computed } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
+import Pop from '../utils/Pop'
+import { providersService } from '../services/ProvidersService'
 export default {
   props: { provider: { type: Object, required: true } },
   setup(props) {
     const router = useRouter()
+
     return {
       account: computed(() => AppState.account),
       selectProvider() {
         router.push({ name: 'Provider', params: { id: props.provider.id } })
-      }
+      },
     }
   }
 }
@@ -67,5 +70,10 @@ export default {
 .provider-picture {
   height: 30px;
   border-radius: 50%;
+}
+
+.button-size {
+  height: 25px;
+  width: 200px;
 }
 </style>

@@ -21,7 +21,7 @@ export const AvailabilitySchema = new Schema(
 )
 export const ProviderSchema = new Schema(
   {
-    coverImg: { type: String, required: true },
+    coverImg: { type: String, default: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGRlZmF1bHQlMjBidXNpbmVzc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' },
     bio: { type: String, required: true },
     description: { type: String, required: true },
     location: { type: String, required: true },
