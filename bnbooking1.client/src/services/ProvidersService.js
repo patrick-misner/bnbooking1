@@ -10,14 +10,15 @@ class ProvidersService {
     }
     async getProvider(providerId) {
         const res = await api.get('api/providers/' + providerId)
-        AppState.activeProvider = res.data
-        AppState.formProvider = res.data
+        logger.log('mark is smat service', res.data)
+        AppState.activeProvider = { ...res.data }
+        AppState.formProvider = { ...res.data }
     }
 
     async editProvider(body) {
         const res = await api.put('api/providers/' + body.id, body)
-        AppState.activeProvider = res.data
         AppState.formProvider = res.data
+        AppState.activeProvider = res.data
     }
 
     async createProvider(body) {
