@@ -36,11 +36,7 @@ class ProvidersService {
         AppState.providers = res.data
     }
 
-<<<<<<< HEAD
-    async getMyProviders(accountId) {
-=======
     async getMyProviders() {
->>>>>>> 3f8737f64f25e2e42be9a2ea5bf2c6f5be9bd7e6
         const res = await api.get('account/providers')
         AppState.myProviders = res.data
         logger.log('myproviders', res.data)
