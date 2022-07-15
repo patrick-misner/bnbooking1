@@ -200,8 +200,7 @@
 
 <script>
 import { computed, onMounted, onUnmounted, ref, watchEffect } from "@vue/runtime-core"
-import { onBeforeRouteLeave, useRoute } from "vue-router"
-import { useRoute, useRouter } from "vue-router"
+import { onBeforeRouteLeave, useRoute, useRouter } from "vue-router"
 import Pop from "../utils/Pop"
 import { logger } from "../utils/Logger"
 import { providersService } from "../services/ProvidersService"
