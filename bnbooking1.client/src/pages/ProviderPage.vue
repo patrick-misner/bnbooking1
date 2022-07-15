@@ -91,46 +91,59 @@
 
   <div class="row justify-content-center">
     <div
-      class="col-10 col-md-8 map m-3 text-success"
+      class="col-10 col-md-8 map m-3 text-dark elevation-2"
       style="
         background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2050&q=80');
       "
     >
-      <div v-for="a in provider.availability" :key="a.id">
-        <div v-if="a.day == 0">
-          Sunday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
-        </div>
-        <div v-if="a.day == 1">
-          Monday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
-        </div>
-        <div v-if="a.day == 2">
-          Tuesday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
-        </div>
-        <div v-if="a.day == 3">
-          Wednesday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
-        </div>
-        <div v-if="a.day == 4">
-          Thursday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
-        </div>
-        <div v-if="a.day == 5">
-          Friday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
-        </div>
-        <div v-if="a.day == 6">
-          Saturday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
-          {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
+      <div class="row">
+        <div class="col-12">
+          <div class="map-card rounded elevation-2 m-3 p-2 text-center">
+            <h3>Hours</h3>
+            <div v-for="a in provider.availability" :key="a.id">
+              <div v-if="a.day == 0">
+                Sunday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
+              </div>
+              <div v-if="a.day == 1">
+                Monday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
+              </div>
+              <div v-if="a.day == 2">
+                Tuesday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
+              </div>
+              <div v-if="a.day == 3">
+                Wednesday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
+              </div>
+              <div v-if="a.day == 4">
+                Thursday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
+              </div>
+              <div v-if="a.day == 5">
+                Friday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
+              </div>
+              <div v-if="a.day == 6">
+                Saturday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.open) }}
+                {{ a.open == 0 && a.close == 0 ? "" : formatTime(a.close) }}
+              </div>
+            </div>
+            <h5 class="mt-2">
+              location: {{ provider.location }}
+              <a :href="`https://maps.google.com/?q=${googleAddress}`"
+                ><i class="mdi mdi-google-maps text-info"></i
+              ></a>
+            </h5>
+          </div>
         </div>
       </div>
     </div>
@@ -202,6 +215,7 @@ export default {
       provider: computed(() => AppState.activeProvider),
       isProvider: computed(() => AppState.account.id === AppState.activeProvider.creatorId),
       reviews: computed(() => AppState.reviews),
+      googleAddress: computed(() => AppState.activeProvider.location.replace(' ', '+')),
       providerAppointments: computed(() => AppState.providerAppointments),
       loading,
       averageRating: computed(() => {
@@ -227,7 +241,7 @@ export default {
           t = t + 12 + ':00 AM'
         }
         return t
-      }
+      },
     };
   },
 }
@@ -252,9 +266,13 @@ i {
 }
 
 .map {
+  border-radius: 5px;
   background-size: cover;
   height: 300px;
   background-position: center;
+}
+.map-card {
+  background-color: rgba(255, 255, 255, 0.729);
 }
 
 .mdi-star {
