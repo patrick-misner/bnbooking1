@@ -155,7 +155,7 @@
             </div>
             <h5 class="mt-2">
               location: {{ provider.location }}
-              <a :href="`https://maps.google.com/?q=${googleAddress}`"
+              <a :href="`https://maps.google.com/?q=fixlater`"
                 ><i class="mdi mdi-google-maps text-info"></i
               ></a>
             </h5>
@@ -239,7 +239,7 @@ export default {
       isProvider: computed(() => AppState.account.id === AppState.activeProvider.creatorId),
       reviews: computed(() => AppState.reviews),
       account: computed(() => AppState.account),
-      googleAddress: computed(() => AppState.activeProvider.location.replace(' ', '+')),
+      // googleAddress: computed(() => AppState.activeProvider.location.replace(' ', '+')),
       providerAppointments: computed(() => AppState.providerAppointments),
       loading,
       averageRating: computed(() => {
