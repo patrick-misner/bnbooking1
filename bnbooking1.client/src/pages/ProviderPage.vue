@@ -5,7 +5,7 @@
       <div class="d-flex justify-content-center">
         <img
           class="img-fluid profile-img"
-          src="https://thiscatdoesnotexist.com"
+          :src="provider.creator.picture"
           alt=""
         />
       </div>

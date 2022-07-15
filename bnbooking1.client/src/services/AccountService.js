@@ -3,6 +3,11 @@ import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
 class AccountService {
+  async saveAccount(accountData){
+    const res = await api.put('/account', accountData)
+    logger.log('saving account page', res.data)
+   
+  }
   async getAccount() {
     try {
       const res = await api.get('/account')
