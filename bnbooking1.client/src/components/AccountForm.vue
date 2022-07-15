@@ -21,6 +21,7 @@
 
 
 <script>
+import { Modal } from 'bootstrap'
 import { computed, ref, watchEffect } from 'vue'
 import { AppState } from '../AppState'
 import { accountService } from '../services/AccountService'
@@ -29,6 +30,7 @@ import Pop from '../utils/Pop'
 
 
 export default {
+  name: 'Account',
   setup(){
     const editable = ref({})
     watchEffect(()=>{
@@ -40,6 +42,7 @@ export default {
        async saveAccount(){
        try {
          await accountService.saveAccount(editable.value)
+         Modal.getOrCreateInstance(document.getElementById("Account-form")).hide()
        } catch (error) {
          logger.error(error)
          Pop.toast(error.message, 'error')

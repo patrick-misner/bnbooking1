@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
 import { api } from './AxiosService'
 
 class AccountService {
@@ -7,6 +8,7 @@ class AccountService {
     try {
       const res = await api.put('/account', accountData)
       logger.log('saving account page', res.data)
+      AppState.account = res.data
     } catch (error) {
       logger.error(error)
       Pop.toast(error.message, 'error')
