@@ -38,6 +38,12 @@ class ProvidersService {
         logger.log('myproviders', res.data)
     }
 
+    async deleteProvider(providerId) {
+        const res = await api.delete('api/providers/' + providerId)
+        AppState.providers = AppState.providers.filter(p => p.id != providerId)
+        AppState.myProviders = AppState.myProviders.filter(m => m.id != providerId)
+    }
+
     // async getAccountProvider(accountId){
     //     const provider = await api.get('api/providers')
     //     AppState.providers = AppState.providers.find(p => p.creatorId == accountId)

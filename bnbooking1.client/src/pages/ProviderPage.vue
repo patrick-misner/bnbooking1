@@ -44,6 +44,14 @@
       >
         <h5><i class="mdi mdi-plus-circle p-2"></i>Review</h5>
       </button>
+      <button
+        type="button"
+        class="btn text-light selectable"
+        @click="deleteProvider(provider.id)"
+        v-else
+      >
+        <h5><i class="mdi mdi-minus-circle p-2"></i>Delete</h5>
+      </button>
     </div>
     <div class="col-3">
       <h5><i class="mdi mdi-plus-circle p-2"></i>Share</h5>
@@ -177,7 +185,7 @@
 
 <script>
 import { computed, onMounted, onUnmounted, ref, watchEffect } from "@vue/runtime-core"
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 import Pop from "../utils/Pop"
 import { logger } from "../utils/Logger"
 import { providersService } from "../services/ProvidersService"
@@ -187,6 +195,7 @@ import { appointmentsService } from '../services/AppointmentsService'
 export default {
   setup() {
     // const averageRating = 
+    const router = useRouter()
     const route = useRoute();
     const loading = ref(true);
     onMounted(async () => {
@@ -242,6 +251,19 @@ export default {
         }
         return t
       },
+      async deleteProvider(providerId) {
+        try {
+          if (await Pop.confirm('Are you sure you want to delete this gig')) {
+            await providersService.deleteProvider(providerId)
+
+            Pop.toast('Gig was deleted', 'success')
+            router.push({ name: 'Account' })
+          }
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      }
     };
   },
 }
