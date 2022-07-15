@@ -15,7 +15,7 @@
         <div class="row">
           <div class="col-12">
             <div class="row border border-secondary elevation-3 p-3 m-3">
-              <h4 class="text-center" v-if="myProviders">My gigs</h4>
+              <h4 class="text-center" v-if="myProviders.length">My gigs</h4>
               <h4 class="text-center" v-else>You don't have any Gigs</h4>
               <div class="row justify-content-around">
                 <div
