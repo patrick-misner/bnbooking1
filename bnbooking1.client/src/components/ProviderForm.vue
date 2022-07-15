@@ -147,13 +147,13 @@ export default {
     const router = useRouter()
     onMounted(() => {
       // TODO figure out best method for editing provider..
-      if (AppState.activeProvider.id) {
-        // editable.value = formatForm()
-      }
+      // if (AppState.formProvider.id) {
+      //   editable.value = formatForm()
+      // }
 
     });
     function formatForm() {
-      let provider = AppState.activeProvider
+      let provider = AppState.formProvider
       let week = provider.availability
       week.forEach(d => {
         d.open = d.oam == 'am' ? d.open : d.open - 12
@@ -167,6 +167,7 @@ export default {
       props,
       editable,
       activeProvider: computed(() => AppState.activeProvider),
+      formProvider: computed(() => AppState.formProvider),
       async createProvider() {
         try {
           // NOTE turn times into correct values based on am/pm
