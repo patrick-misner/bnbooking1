@@ -29,7 +29,7 @@
   <Modal id="create-provider">
     <template #header>Become a Provider</template>
     <template #body>
-      <CreateProviderForm />
+      <ProviderForm />
     </template>
   </Modal>
 </template>

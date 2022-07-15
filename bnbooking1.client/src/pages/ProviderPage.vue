@@ -233,6 +233,7 @@ export default {
     }),
       onBeforeRouteLeave(() => {
         AppState.activeProvider = {}
+        AppState.formProvider = {}
       })
     return {
       provider: computed(() => AppState.activeProvider),
