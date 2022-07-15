@@ -94,7 +94,6 @@ import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import { appointmentsService } from '../services/AppointmentsService';
 import { logger } from '../utils/Logger';
-import Pop from '../utils/Pop';
 import { providersService } from '../services/ProvidersService';
 export default {
   name: "Account",

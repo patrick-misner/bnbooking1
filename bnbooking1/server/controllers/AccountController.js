@@ -12,6 +12,15 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/appointments', this.getAccountAppointments)
       .get('/providers', this.getAccountProviders)
+      .put('', this.updateAccount)
+  }
+  async updateAccount(req, res, next) {
+    try {
+      const account = await accountService.updateAccount(req.userInfo, req.body)
+      return res.send(account)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async getAccountAppointments(req, res, next) {
