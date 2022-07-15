@@ -8,8 +8,13 @@ class ProvidersService {
         logger.log('getting providers', res.data)
         AppState.providers = res.data
     }
-    async getProvider(providerId){
+    async getProvider(providerId) {
         const res = await api.get('api/providers/' + providerId)
+        AppState.activeProvider = res.data
+    }
+
+    async editProvider(body) {
+        const res = await api.put('api/providers/' + body.id, body)
         AppState.activeProvider = res.data
     }
 
@@ -30,7 +35,7 @@ class ProvidersService {
         AppState.providers = res.data
     }
 
-    async getMyProviders(accountId){
+    async getMyProviders(accountId) {
         const res = await api.get('account/providers')
         AppState.myProviders = res.data
         logger.log('myproviders', res.data)

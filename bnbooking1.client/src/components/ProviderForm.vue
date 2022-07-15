@@ -108,45 +108,65 @@
     <label>Description of Services Provided</label>
     <textarea v-model="editable.description" required />
     <button class="ms-3" type="button" data-bs-dismiss="modal">Cancel</button>
-    <button class="ms-3" v-if="!provider" type="button" @click="createProvider">
+    <button
+      class="ms-3"
+      v-if="!activeProvider.id"
+      type="button"
+      @click="createProvider"
+    >
       Create
     </button>
-    <button v-else type="button" @click="editProviderDetails">Save!</button>
+    <button v-else type="button" @click="editProvider">Save!</button>
   </form>
 </template>
 
 <script>
-import { ref } from "@vue/reactivity"
+import { computed, ref } from "@vue/reactivity"
 import Pop from "../utils/Pop"
 import { Modal } from "bootstrap"
-import { watchEffect } from '@vue/runtime-core'
-import { useRouter } from 'vue-router'
+import { onMounted, watchEffect } from '@vue/runtime-core'
+import { useRoute, useRouter } from 'vue-router'
 import { providersService } from '../services/ProvidersService'
 import { logger } from '../utils/Logger'
+import { AppState } from '../AppState'
 export default {
   props: { provider: { type: Object, required: false } },
   setup(props) {
+    const route = useRoute();
     function createAllDays() {
       logger.log("create all days ran")
       let days = []
       for (let i = 0; i < 7; i++) {
         days.push({ day: i, open: 0, close: 0, oam: 'am', cam: 'am' })
       }
-      logger.log('give me days', days)
       return days
     }
     const editable = ref({
       availability: createAllDays()
     })
     const router = useRouter()
-    watchEffect(() => {
+    onMounted(() => {
       // TODO figure out best method for editing provider..
-      // editable.value = { ...props.provider }
-    })
+      if (AppState.activeProvider.id) {
+        // editable.value = formatForm()
+      }
+
+    });
+    function formatForm() {
+      let provider = AppState.activeProvider
+      let week = provider.availability
+      week.forEach(d => {
+        d.open = d.oam == 'am' ? d.open : d.open - 12
+        d.close = d.cam == 'am' ? d.close : d.close - 12
+      })
+      provider.availability = week
+      return provider
+    }
     return {
       weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       props,
       editable,
+      activeProvider: computed(() => AppState.activeProvider),
       async createProvider() {
         try {
           // NOTE turn times into correct values based on am/pm
@@ -165,9 +185,15 @@ export default {
       },
       async editProvider() {
         try {
-          await providersService.editEvent(editable.value)
+          let week = editable.value.availability
+          week.forEach(d => {
+            d.open = d.oam == 'am' ? d.open : parseInt(d.open) + 12
+            d.close = d.cam == 'am' ? d.close : parseInt(d.close) + 12
+          })
+          console.log('edit form sent', editable.value)
+          await providersService.editProvider(editable.value)
           Pop.toast('Provider Details updated!')
-          Modal.getOrCreateInstance(document.getElementById('edit-provider')).hide()
+          Modal.getOrCreateInstance(document.getElementById('create-provider')).hide()
         } catch (error) {
           Pop.error(error)
         }

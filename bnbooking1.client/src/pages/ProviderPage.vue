@@ -11,8 +11,16 @@
       </div>
       <div class="text-center text-light">
         <p>
-          {{ provider.name
-          }}<i class="mdi mdi-pencil" @click="editProvider"></i>
+          {{ provider.name }}
+          <button
+            v-if="provider.creatorId == account.id"
+            type="button"
+            class="btn btn-primary p-1"
+            data-bs-toggle="modal"
+            data-bs-target="#create-provider"
+          >
+            <i class="mdi mdi-pencil"></i>
+          </button>
         </p>
       </div>
     </div>
@@ -173,11 +181,18 @@
       <ReviewForm :provider="provider" />
     </template>
   </Modal>
+
+  <Modal id="create-provider" v-if="provider.id">
+    <template #header>Become a Provider</template>
+    <template #body>
+      <ProviderForm />
+    </template>
+  </Modal>
 </template>
 
 <script>
 import { computed, onMounted, onUnmounted, ref, watchEffect } from "@vue/runtime-core"
-import { useRoute } from "vue-router"
+import { onBeforeRouteLeave, useRoute } from "vue-router"
 import Pop from "../utils/Pop"
 import { logger } from "../utils/Logger"
 import { providersService } from "../services/ProvidersService"
@@ -207,14 +222,14 @@ export default {
         Pop.toast(error.message, "error");
       }
     }),
-      onUnmounted(() => {
-        AppState.activeProvider = {};
-        AppState.reviews = [];
-      });
+      onBeforeRouteLeave(() => {
+        AppState.activeProvider = {}
+      })
     return {
       provider: computed(() => AppState.activeProvider),
       isProvider: computed(() => AppState.account.id === AppState.activeProvider.creatorId),
       reviews: computed(() => AppState.reviews),
+      account: computed(() => AppState.account),
       googleAddress: computed(() => AppState.activeProvider.location.replace(' ', '+')),
       providerAppointments: computed(() => AppState.providerAppointments),
       loading,

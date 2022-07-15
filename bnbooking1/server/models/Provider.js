@@ -10,10 +10,13 @@ function closeCheck(open, close) {
 // Schema for availability field on Provider
 export const AvailabilitySchema = new Schema(
   {
+    // TODO make sure close is larger than open
     day: { type: Number, min: 0, max: 6, required: true },
     open: { type: Number, min: 0, max: 24, required: true },
-    // TODO make sure close is larger than open
-    close: { type: Number, min: 0, max: 24, required: true }
+    close: { type: Number, min: 0, max: 24, required: true },
+    oam: { type: String, required: true },
+    cam: { type: String, required: true },
+
   }
 )
 export const ProviderSchema = new Schema(
