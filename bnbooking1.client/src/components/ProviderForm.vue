@@ -157,7 +157,6 @@ export default {
           })
           const provider = await providersService.createProvider(editable.value)
           Pop.toast('Provider Created!')
-          router.push({ name: 'ProviderDetails', params: { id: provider.id } })
           Modal.getOrCreateInstance(document.getElementById('create-provider')).hide()
         } catch (error) {
           Pop.error(error)

@@ -8,10 +8,11 @@ class ProvidersService {
         logger.log('getting providers', res.data)
         AppState.providers = res.data
     }
-    async getProvider(providerId){
+    async getProvider(providerId) {
         const res = await api.get('api/providers/' + providerId)
         AppState.activeProvider = res.data
     }
+
 
     async createProvider(body) {
         logger.log('new provider', body)
@@ -19,6 +20,7 @@ class ProvidersService {
         logger.log('created provider', res.data)
         // AppState.accountProvider.push(res.data)
         AppState.providers.push(res.data)
+        AppState.myProviders.push(res.data)
         return res.data
     }
 
@@ -30,7 +32,7 @@ class ProvidersService {
         AppState.providers = res.data
     }
 
-    async getMyProviders(accountId){
+    async getMyProviders() {
         const res = await api.get('account/providers')
         AppState.myProviders = res.data
         logger.log('myproviders', res.data)

@@ -9,10 +9,10 @@
       <div class="col-10 d-flex">
         <img
           class="img-fluid provider-picture"
-          :src="provider.creator.picture"
+          :src="provider.creator?.picture"
           alt=""
         />
-        <p class="p-1">{{ provider.creator.name }}</p>
+        <p class="p-1">{{ provider.creator?.name }}</p>
       </div>
     </div>
     <div class="row p-2">

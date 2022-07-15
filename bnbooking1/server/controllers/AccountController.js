@@ -13,14 +13,15 @@ export class AccountController extends BaseController {
       .get('/appointments', this.getAccountAppointments)
       .get('/providers', this.getAccountProviders)
   }
- async getAccountAppointments(req, res, next) {
+
+  async getAccountAppointments(req, res, next) {
     try {
       const appointments = await appointmentsService.getAccountAppointments(req.userInfo.id)
-    return res.send(appointments)
+      return res.send(appointments)
     } catch (error) {
       next(error)
     }
-    
+
   }
 
   async getUserAccount(req, res, next) {

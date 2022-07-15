@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-3">
-        <div class="row border border-dark p-3 m-3">
+      <div class="col-md-3">
+        <div class="row border border-secondary elevation-3 p-3 m-3">
           <div class="about text-center">
             <h1>Welcome</h1>
             <img class="account-picture" :src="account.picture" alt="" />
@@ -11,11 +11,36 @@
           </div>
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-md-9">
         <div class="row">
           <div class="col-12">
-            <div class="row border border-dark p-3 m-3">
-              <h4 class="text-center">My gigs</h4>
+            <div class="row border border-secondary elevation-3 p-3 m-3">
+              <h4 class="text-center" v-if="myProviders">My gigs</h4>
+              <h4 class="text-center" v-else>You don't have any Gigs</h4>
+              <div class="row justify-content-around">
+                <div
+                  v-for="p in myProviders"
+                  :key="p.id"
+                  class="col-md-4 p-0 m-2 elevation-3 grow bg-light"
+                >
+                  <Provider :provider="p" />
+                </div>
+              </div>
+              <div class="text-center">
+                <button
+                  class="btn btn-outline-secondary me-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#create-provider"
+                >
+                  Create New Provider
+                </button>
+              </div>
+              <Modal id="create-provider">
+                <template #header>Become a Provider</template>
+                <template #body>
+                  <ProviderForm />
+                </template>
+              </Modal>
             </div>
           </div>
         </div>
@@ -32,7 +57,7 @@
                 ></i>
               </h4>
             </div>
-            <div class="col-12 pb-3 collapse" id="clientappt">
+            <div class="col-md-12 pb-3 collapse" id="clientappt">
               <ClientAppointment
                 v-for="a in myProviderAppointments"
                 :key="a.id"
@@ -50,7 +75,7 @@
                 ></i>
               </h4>
             </div>
-            <div class="col-12 collapse" id="appt">
+            <div class="col-md-12 collapse" id="appt">
               <Appointment
                 v-for="a in userAppointments"
                 :key="a.id"
@@ -69,17 +94,21 @@ import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import { appointmentsService } from '../services/AppointmentsService';
 import { logger } from '../utils/Logger';
+import Pop from '../utils/Pop';
+import { providersService } from '../services/ProvidersService';
 export default {
   name: "Account",
   setup() {
+
     onMounted(async () => {
+      await providersService.getMyProviders()
       await appointmentsService.getUserAppointments();
       await appointmentsService.getMyProviderAppointments()
       logger.log(AppState.providers)
     });
     return {
       account: computed(() => AppState.account),
-      provider: computed(() => AppState.provider),
+      myProviders: computed(() => AppState.myProviders),
       userAppointments: computed(() => AppState.userAppointments),
       myProviderAppointments: computed(() => AppState.myProviderAppointments),
     };
