@@ -147,9 +147,9 @@ export default {
     const router = useRouter()
     onMounted(() => {
       // TODO figure out best method for editing provider..
-      if (AppState.activeProvider.id) {
-        // editable.value = formatForm()
-      }
+      // if (AppState.activeProvider.id) {
+      //   editable.value = formatForm()
+      // }
 
     });
     function formatForm() {
