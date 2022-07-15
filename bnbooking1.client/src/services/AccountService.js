@@ -4,8 +4,13 @@ import { api } from './AxiosService'
 
 class AccountService {
   async saveAccount(accountData){
-    const res = await api.put('/account', accountData)
-    logger.log('saving account page', res.data)
+    try {
+      const res = await api.put('/account', accountData)
+      logger.log('saving account page', res.data)
+    } catch (error) {
+      logger.error(error)
+      Pop.toast(error.message, 'error')
+    }
    
   }
   async getAccount() {
