@@ -1,5 +1,7 @@
 import { dbContext } from "../db/DbContext"
+import { socketProvider } from "../SocketProvider"
 import { BadRequest } from "../utils/Errors"
+import { logger } from "../utils/Logger"
 
 class AppointmentsService {
   async getAccountAppointments(accountId) {
@@ -12,6 +14,10 @@ class AppointmentsService {
   }
   async create(body) {
     const appointment = await dbContext.Appointments.create(body)
+    await appointment.populate('provider account')
+
+    logger.log(body.providerId)
+    socketProvider.messageUser(appointment.provider.creatorId.toString(),'appointment:created',appointment)
     return appointment
   }
 
