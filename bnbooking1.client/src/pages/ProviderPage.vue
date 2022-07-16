@@ -1,8 +1,8 @@
 <template>
   <!-- <div class="container-fluid"> -->
-  <div class="row bg-img">
+  <div class="row bg-img" :style="`background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('${provider.coverImg}'); background-size: cover; overflow: hidden;`">
     <div class="col-12">
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center pt-4">
         <img
           class="img-fluid profile-img"
           :src="provider.creator.picture"
@@ -287,16 +287,18 @@ export default {
 
 <style>
 .bg-img {
-  background-image: url("https://placekitten.com/200");
   background-size: cover;
-  height: 25vh;
+  background-position: center;
+  height: 175px;
   background-repeat: no-repeat;
 }
 
 .profile-img {
   border-radius: 50%;
-  height: 150px;
-  min-height: 150px;
+  height: 100px;
+  min-height: 100px;
+  width: 100px;
+  min-width: 100px;
 }
 
 i {
