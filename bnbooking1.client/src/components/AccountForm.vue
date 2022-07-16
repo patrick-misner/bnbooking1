@@ -1,5 +1,5 @@
 <template>
- <form id="Account-form">
+ <form id="Account-form" @submit.prevent="saveAccount">
     <label>Name</label>
     <input
       v-model="editable.name"
@@ -15,7 +15,7 @@
       required
     />
     <button class="btn btn-outline-danger" data-bs-dismiss="modal">cancel</button>
-    <button class="btn btn-outline-success"  @click="saveAccount">Update Account</button>
+    <button class="btn btn-outline-success" type="submit">Update Account</button>
   </form>
 </template>
 
