@@ -1,7 +1,10 @@
-\<template>
+<template>
   <header>
-    <!-- <Navbar /> -->
-    <div class="d-flex justify-content-around align-items-center newHeader">
+
+    
+    <div class="row">
+      <div class="col-12 p-0">
+            <div class="d-flex justify-content-around align-items-center newHeader">
       <button
         type="button"
         class="btn btn-primary me-3"
@@ -12,9 +15,14 @@
       </button>
       <Login />
     </div>
+      </div>
+    </div>
+
   </header>
-  <body class="bg-primary">
-    <!-- <div class="container-fluid"> -->
+  
+    <div class="row">
+      <div class="col-12">
+      <body class="bg-primary">
     <div class="row justify-content-around">
       <div
         v-for="p in providers"
@@ -24,8 +32,11 @@
         <Provider :provider="p" />
       </div>
     </div>
-    <!-- </div> -->
-  </body>
+       </body>   
+      </div>
+    </div>
+
+
   <Modal id="create-provider">
     <template #header>Become a Provider</template>
     <template #body>
