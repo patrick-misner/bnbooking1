@@ -139,6 +139,12 @@ export default {
         let open = this.provider.availability[day].open
         let close = this.provider.availability[day].close
         const range = [...Array(close - open + 1).keys()].map(x => x + open);
+        for (let i = 0; i < range.length; i++) {
+          const time = range[i];
+          if ( time === 24){
+            range.splice(i, 1)
+          }
+        }
         AppState.availableTimes = range
 
         const found = this.providerAppointments.filter(a => date.toLocaleDateString() == new Date(a.date).toLocaleDateString()).map(a => a.startTime)
@@ -150,14 +156,17 @@ export default {
         return dailyAppointments.value.includes(t)
       },
       formatTime(t) {
-        if (t < 12){
+        if (t < 12 && t != 0) {
           t = t + ':00 AM'
         }
-        if (t == 12){
+        if (t == 12) {
           t = t + ':00 PM'
         }
-        if (t > 12){
+        if (t > 12 && t < 24) {
           t = t - 12 + ':00 PM'
+        }
+        if (t == 0) {
+          t = t + 12 + ':00 AM'
         }
         return t
       }

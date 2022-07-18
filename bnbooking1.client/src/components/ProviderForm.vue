@@ -48,18 +48,18 @@
           id="providers"
           v-model="editable.availability[i].open"
         >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="0">12</option>
+          <option value="0">12:00</option>
+          <option value="1">1:00</option>
+          <option value="2">2:00</option>
+          <option value="3">3:00</option>
+          <option value="4">4:00</option>
+          <option value="5">5:00</option>
+          <option value="6">6:00</option>
+          <option value="7">7:00</option>
+          <option value="8">8:00</option>
+          <option value="9">9:00</option>
+          <option value="10">10:00</option>
+          <option value="11">11:00</option>
         </select>
         <select
           v-model="editable.availability[i].oam"
@@ -74,18 +74,19 @@
           name="providers"
           id="providers"
         >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="0">12</option>
+          <option value="0">12:00</option>
+          <option value="1">1:00</option>
+          <option value="2">2:00</option>
+          <option value="3">3:00</option>
+          <option value="4">4:00</option>
+          <option value="5">5:00</option>
+          <option value="6">6:00</option>
+          <option value="7">7:00</option>
+          <option value="8">8:00</option>
+          <option value="9">9:00</option>
+          <option value="10">10:00</option>
+          <option value="11">11:00</option>
+          <option value="12">End of day</option>
         </select>
         <select
           v-model="editable.availability[i].cam"
@@ -194,6 +195,7 @@ export default {
           })
           console.log('edit form sent', editable.value)
           await providersService.editProvider(editable.value)
+          editable.value = formatForm()
           Pop.toast('Provider Details updated!')
           Modal.getOrCreateInstance(document.getElementById('create-provider')).hide()
         } catch (error) {
