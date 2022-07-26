@@ -1,6 +1,9 @@
 <template>
   <!-- <div class="container-fluid"> -->
-  <div class="row bg-img" :style="`background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('${provider.coverImg}'); background-size: cover; overflow: hidden;`">
+  <div
+    class="row bg-img"
+    :style="`background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('${provider.coverImg}'); background-size: cover; overflow: hidden;`"
+  >
     <div class="col-12">
       <div class="d-flex justify-content-center pt-4">
         <img
@@ -119,45 +122,101 @@
             <div v-for="a in provider.availability" :key="a.id">
               <div v-if="a.day == 0">
                 Sunday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-                {{ a.open == 0 && a.close == 24 ? "24 hours" : ""}}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.open) + ' to' }}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.close) }}
+                {{ a.open == 0 && a.close == 24 ? "24 hours" : "" }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.open) + " to"
+                }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.close)
+                }}
               </div>
               <div v-if="a.day == 1">
                 Monday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-                {{ a.open == 0 && a.close == 24 ? "24 hours" : ""}}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.open) + ' to' }}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.close) }}
+                {{ a.open == 0 && a.close == 24 ? "24 hours" : "" }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.open) + " to"
+                }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.close)
+                }}
               </div>
               <div v-if="a.day == 2">
                 Tuesday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-                {{ a.open == 0 && a.close == 24 ? "24 hours" : ""}}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.open) + ' to' }}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.close) }}
+                {{ a.open == 0 && a.close == 24 ? "24 hours" : "" }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.open) + " to"
+                }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.close)
+                }}
               </div>
               <div v-if="a.day == 3">
                 Wednesday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-                {{ a.open == 0 && a.close == 24 ? "24 hours" : ""}}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.open) + ' to' }}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.close) }}
+                {{ a.open == 0 && a.close == 24 ? "24 hours" : "" }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.open) + " to"
+                }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.close)
+                }}
               </div>
               <div v-if="a.day == 4">
                 Thursday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-                {{ a.open == 0 && a.close == 24 ? "24 hours" : ""}}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.open) + ' to' }}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.close) }}
+                {{ a.open == 0 && a.close == 24 ? "24 hours" : "" }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.open) + " to"
+                }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.close)
+                }}
               </div>
               <div v-if="a.day == 5">
                 Friday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-                {{ a.open == 0 && a.close == 24 ? "24 hours" : ""}}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.open) + ' to' }}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.close) }}
+                {{ a.open == 0 && a.close == 24 ? "24 hours" : "" }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.open) + " to"
+                }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.close)
+                }}
               </div>
               <div v-if="a.day == 6">
                 Saturday {{ a.open == 0 && a.close == 0 ? "Closed" : "" }}
-                {{ a.open == 0 && a.close == 24 ? "24 hours" : ""}}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.open) + ' to' }}
-                {{ a.open == 0 && a.close == 0 || a.close >= 24 ? "" : formatTime(a.close) }}
+                {{ a.open == 0 && a.close == 24 ? "24 hours" : "" }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.open) + " to"
+                }}
+                {{
+                  (a.open == 0 && a.close == 0) || a.close >= 24
+                    ? ""
+                    : formatTime(a.close)
+                }}
               </div>
             </div>
             <h5 class="mt-2">
