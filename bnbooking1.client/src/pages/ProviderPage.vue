@@ -221,7 +221,7 @@
             </div>
             <h5 class="mt-2">
               location: {{ provider.location }}
-              <a :href="`https://maps.google.com/?q=fixlater`"
+              <a :href="`https://maps.google.com/?q=${provider.address}`"
                 ><i class="mdi mdi-google-maps text-info"></i
               ></a>
             </h5>
