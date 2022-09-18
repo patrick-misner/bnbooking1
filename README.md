@@ -1,7 +1,7 @@
 
 <h1 align="center"><project-name> BnBooking - Scheduling App</h1>
 
-<p align="center"><project-description>Users can register and become a provider, set their hours of operation. Users can book appointments with the providers and review. The front-end was written with Vue.js, a reactive javascript framework. The back-end is a node.js API server using the MVC pattern and mongoose to query MongoDB.</p>
+<p align="center"><project-description>Users can register and create one or many provider pages and set their hours of operation. Users can book appointments with the providers and review Providers. The front-end was written with Vue.js, a reactive javascript framework. The back-end is a node.js API server using the MVC pattern and mongoose to query MongoDB.</p>
 
 # Links
 
@@ -33,16 +33,16 @@
 
 **Nik Lyons**
 
-- [Profile](https://github.com/patrick-misner "Nik Lyons")
+- [Profile](https://github.com/NikolasLyons "Nik Lyons")
 
 **Jeff Watson**
 
-- [Profile](https://github.com/patrick-misner "Jeff Watson")
+- [Profile](https://github.com/JeffreyWatson "Jeff Watson")
 
 
 **Conner Seely**
 
-- [Profile](https://github.com/patrick-misner "Conner Seely")
+- [Profile](https://github.com/ConnerSeely "Conner Seely")
 
 
 **Patrick Misner**
@@ -55,75 +55,65 @@
 
 ## Home Page
 
-![Home Page](/allspice.client/src/assets/img/homepage.png)
+![Home Page](/bnbooking1.client/src/assets/img/homepage.png)
 
 ---
 
-## Sorting and Editing Steps
+## Scheduling an appointment
 
-A demo of the vue draggable component for editing steps.
+On the provider page, users can click Book
 
-![](/allspice.client/src/assets/img/editsteps.gif)
+![](/bnbooking1.client/src/assets/img/book1.png)
 
----
+Vue3 datepicker, when date is picked a function is ran for the available hours that day
 
-## Adding a Recipe
+![](/bnbooking1.client/src/assets/img/book2.png)
 
-Click the add icon in the bottom right
+Creating an appointment at 2pm on 9/17/22
 
-![](/allspice.client/src/assets/img/createrecipestep1.png)
+![](/bnbooking1.client/src/assets/img/book3.png)
 
-v-model form with floating labels
-![](/allspice.client/src/assets/img/createrecipestep2.png)
+Pop toast notification
 
-Form modal closes and opens for recipe 
-![](/allspice.client/src/assets/img/createrecipestep3.png)
+![](/bnbooking1.client/src/assets/img/book4.png)
 
+Function also checked if provider already has appointments that day and disabled the field.
 
-
-
-- - -
-## Search function
-
-search bar in top right
-
-![](/allspice.client/src/assets/img/searchresults1.png)
-
-![](/allspice.client/src/assets/img/searchresults2.png)
-
-![](/allspice.client/src/assets/img/searchresults3.png)
-
-Filtering also works on search results
-![](/allspice.client/src/assets/img/searchresults4.png)
+![](/bnbooking1.client/src/assets/img/book5.png)
 
 
-![](/allspice.client/src/assets/img/searchresults5.png)
 
 ---
 
-## Filtering
+## Registering as a Provider / Editing provider
 
+Users can set their provider availability.
 
-My recipes displays recipes with current user's creatorId
-![](/allspice.client/src/assets/img/filterstep2.png)
+![](/bnbooking1.client/src/assets/img/providerform.png)
 
-![](/allspice.client/src/assets/img/filterstep3.png)
+Users can edit their provider availability.
+
+![](/bnbooking1.client/src/assets/img/editprovider1.png)
+
+![](/bnbooking1.client/src/assets/img/editprovider2.png)
 
 ---
 
-## Error handling
+## Reviews
 
-Favorites and My Recipes error
-![](/allspice.client/src/assets/img/error1.png)
+Users can write reviews on providers they did not create. Reviews are averaged on the provider page
 
-Not logged in
-![](/allspice.client/src/assets/img/error2.png)
+![](/bnbooking1.client/src/assets/img/reviews.png)
 
-Logged in
-![](/allspice.client/src/assets/img/error3.png)
+---
 
-Filtered search result error
-![](/allspice.client/src/assets/img/error4.png)
+## My Account Page
 
-No matches found
-![](/allspice.client/src/assets/img/error5.png)
+Users can write reviews on providers they did not create. Reviews are averaged on the provider page
+
+![](/bnbooking1.client/src/assets/img/myaccount.png)
+
+Users can see their provider accounts, and appointments (users can have many)
+
+![](/bnbooking1.client/src/assets/img/myaccount1.png)
+
