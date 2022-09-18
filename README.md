@@ -53,6 +53,10 @@
 
 # Screenshots
 
+## Demo
+
+![Home Page](/bnbooking1.client/src/assets/img/bnbooking.gif)
+
 ## Home Page
 
 ![Home Page](/bnbooking1.client/src/assets/img/homepage.png)
