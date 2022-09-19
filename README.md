@@ -7,7 +7,7 @@
 
 - [Repo](https://github.com/patrick-misner/bnbooking1 "Repository")
 
-- [Live](https://bnbooking.herokuapp.com/#/ "Live View")
+- [Live (Heroku, may take some time to load)](https://bnbooking.herokuapp.com/#/ "Live View")
 
 
 ## Built With
